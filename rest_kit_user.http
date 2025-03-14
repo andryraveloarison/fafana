@@ -1,0 +1,249 @@
+# tsirylandyrasamizafy@gmail.com
+# andrianirinakoloinatsiorintsoa@gmail.com
+# rianalarabe13@gmail.com
+# rantsajonathan@gmail.com
+# mickaelrkt20@gmail.com   
+
+### LOGIN
+POST http://localhost:4000/login
+Content-Type: application/json
+
+{
+    "email": "andrianirinakoloinatsiorintsoa@gmail.com",
+    "password": "Koloina0@"
+}
+
+
+
+###################### KIT FOR USER #################################
+### GET KIT USER
+POST http://localhost:4000/getkitbyiduser
+Content-Type: application/json
+
+{
+    "utilisateurId": "3"
+}
+
+
+
+### GET KIT USER
+POST https://ecozipo-codesource.onrender.com/getkitbyuser
+Content-Type: application/json
+
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjozLCJlbWFpbCI6ImFuZHJpYW5pcmluYWtvbG9pbmF0c2lvcmludHNvYUBnbWFpbC5jb20iLCJpYXQiOjE3Mjk1MDEwMTcsImV4cCI6MTcyOTUwNDYxN30.VQLR-aJ4glrALcNFRi0PeQWLPowbiUBzIz0wDFnrbAE"
+}
+
+
+### GET KIT BY DID
+POST http://localhost:4000/getkitbydid
+Content-Type: application/json
+
+{
+    "DID": "6007665"
+}
+
+
+
+### ADD KIT FOR USER
+PUT http://localhost:4000/createkituser
+Content-Type: application/json
+
+{
+    "DID": "6007665",
+    "compteElectriciteEauId": "2"
+}
+
+
+
+### UPDATE KIT IN GROUPE
+POST http://localhost:4000/updatekitingroupe
+Content-Type: application/json
+
+{
+    "DID": "6007665",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjozLCJlbWFpbCI6ImFuZHJpYW5pcmluYWtvbG9pbmF0c2lvcmludHNvYUBnbWFpbC5jb20iLCJpYXQiOjE3Mjg2MTkwODAsImV4cCI6MTcyODYyMjY4MH0.SHcDSSvx1iNazFtk6CQDNOR5zCA_IgKq7XljMWg8zm8",
+    "kitGroupeId":"2"
+}
+
+
+
+
+###################### PARAM KIT #################################
+# KIT 1 : 6007665
+# KIT 2 : 6007664
+# KIT 3 : 6031055
+# https://ecozipo-codesource.onrender.com
+### GET KIT STATUS QUERY
+POST https://ecozipo-codesource.onrender.com/getkitstatusquery
+Content-Type: application/json
+
+{
+    "DID": 6007664
+}
+
+
+### ALLUME OU ÉTEINDRE KIT
+POST https://ecozipo-codesource.onrender.com/kitonoroff
+Content-Type: application/json
+
+{
+    "DID": "6007664",
+    "status": 0
+}
+
+
+
+### GET KIT CONSOMMATION BY PERIOD
+POST http://localhost:4000/getkitconsommationbyperiod
+Content-Type: application/json
+
+{
+    "DID": "6007664",
+    "startTime": "11/1/2024",
+    "endTime":"11/30/2024"
+}
+
+
+### GET KIT CONSOMMATION BY YEAR
+POST https://ecozipov6.onrender.com/getkitconsommationbyyear
+Content-Type: application/json
+
+{
+    "DID": "6007664",
+    "year":"2024",
+    "type":"prix"
+}
+
+
+### GET KIT CONSOMMATION BY WEEK
+POST http://localhost:4000/getkitconsommationonweek
+Content-Type: application/json
+
+{
+    "DID": "6007664",
+    "date":"25/10/2024",
+    "type":"kwh"
+}
+
+
+
+### GET KIT HISTORIQUE BY MOIS
+POST http://localhost:4000/gethistoriquebymois
+Content-Type: application/json
+
+{
+    "DID": "6007665",
+    "startTime": "10-01-2024",
+    "endTime":"10-31-2024 12:00:00"
+}
+
+
+
+### GET ALL ACTION KIT
+POST https://ecozipov6.onrender.com/getallactionkit
+Content-Type: application/json
+
+{
+    "DID": "6007664"
+}
+
+
+
+### ADD ACTION KIT
+POST http://localhost:4000/addactionkit
+Content-Type: application/json
+
+{
+    "DID": "6007665",
+    "heure":"10",
+    "minute":"23",
+    "action":"0",
+    "ScheduleCycle": []
+}
+
+
+
+### UPDATE ACTION KIT
+POST http://localhost:4000/updateactionkit
+Content-Type: application/json
+
+{
+    "DID": "6007665",
+    "ScheduleID":"1",
+    "heure":"10",
+    "minute":"00",
+    "action":"0",
+    "EnabledStatus":"",
+    "ScheduleCycle": []
+}
+
+
+
+
+
+### DELETE ACTION KIT
+POST http://localhost:4000/deleteactionkit
+Content-Type: application/json
+
+{
+    "DID": "6007665",
+    "ScheduleID":"1"
+}
+
+
+
+
+
+
+####################### KIT GROUPE #################################################################################
+# GET ALL KIT GROUPE
+GET http://localhost:4000/getallkitgroupe
+
+
+
+
+### GET KIT GROUPE BY USER
+POST http://localhost:4000/getkitgroupebyuser
+Content-Type: application/json
+
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjozLCJlbWFpbCI6ImFuZHJpYW5pcmluYWtvbG9pbmF0c2lvcmludHNvYUBnbWFpbC5jb20iLCJpYXQiOjE3Mjg2MTc0MzYsImV4cCI6MTcyODYyMTAzNn0.KG6Wm0EcbsueMbQLuQ8pVNF6k8ANiKFgUr8DxqDqB8I"
+}
+
+
+### CREATE KIT GROUPE
+PUT http://localhost:4000/createkitgroupe
+Content-Type: application/json
+
+{
+    "kitgroupe": "default",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjozLCJlbWFpbCI6ImFuZHJpYW5pcmluYWtvbG9pbmF0c2lvcmludHNvYUBnbWFpbC5jb20iLCJpYXQiOjE3Mjk1MDA4NDgsImV4cCI6MTcyOTUwNDQ0OH0.D4hcDI1V42WhrWwcJzQ-Zwg-pIRwJFCn5iMQ7e41Ft8"
+}
+
+
+### UPDATE APPAREIL TYPE
+POST http://localhost:4000/updatetypeappareil
+Content-Type: application/json
+
+{
+    "typeId": "1",
+    "type": "kit",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoxMCwiZW1haWwiOiJhbmRyaWFuaXJpbmFrb2xvaW5hdHNpb3JpbnRzb2FAZ21haWwuY29tIiwiaWF0IjoxNzI1NDUzNjk0LCJleHAiOjE3MjU0NTcyOTR9.n-cb7MjIKqtJdXP3pQ2W9ITATpPNVFcrzXvYlJqAik0"
+}
+
+
+### DELETE APPAREIL TYPE
+DELETE http://localhost:4000/deletetypeappareil
+Content-Type: application/json
+
+{
+    "typeId": "1"
+}
+
+
+
+### DELETE ALL APPAREIL TYPE
+DELETE  http://localhost:4000/deletealltypeappareil
+Content-Type: application/json
+

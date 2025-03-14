@@ -1,0 +1,161 @@
+# https://ecozipo-codesource.onrender.com
+# http://localhost:4000
+
+
+# tsirylandyrasamizafy@gmail.com
+# andrianirinakoloinatsiorintsoa@gmail.com
+# rianalarabe13@gmail.com
+# rantsajonathan@gmail.com
+# mickaelrkt20@gmail.com    
+### LOGIN
+POST http://localhost:4000/login
+Content-Type: application/json
+
+{
+    "email": "ecozipo@gmail.com",
+    "password": "xanHod-7zedci-xehmod"
+}
+
+    
+
+
+
+####################### BLOG  #################################################################################
+# GET ALL BLOG  
+GET https://ecozipo-codesource.onrender.com/getallblog
+
+
+### GET BLOG BY ID
+POST http://localhost:4000/getblogbyid
+Content-Type: application/json
+
+{
+    "idBlog": "1"
+}
+
+
+
+### GET BLOG BY BLOG TYPE
+POST http://localhost:4000/getblogbyblogtype
+Content-Type: application/json
+
+{
+    "typeBlogId": "1"
+}
+
+
+
+### CREATE BLOG IA
+PUT http://localhost:4000/createblog
+Content-Type: application/json
+
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoxLCJlbWFpbCI6Im1pY2thZWxya3QyMEBnbWFpbC5jb20iLCJpYXQiOjE3MjI5NDY0NjYsImV4cCI6MTcyMjk1MDA2Nn0.eNRXl8XK1w5zfN9iYuRtA-GEEd83VLoEi-cIvllGU3Y",
+    "typeBlogId": 3
+}
+
+
+
+### UPDATE URL BLOG  
+POST https://ecozipo-codesource.onrender.com/updateurlblog
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+####################### BLOG TYPE #################################################################################
+# GET ALL BLOG TYPE 
+GET http://localhost:4000/getallblogtype
+
+
+### GET BLOG TYPE BY ID
+POST http://localhost:4000/getblogtypebyid
+Content-Type: application/json
+
+{
+    "idBlogType": "1"
+}
+
+
+### CREATE BLOG TYPE
+PUT http://localhost:4000/createblogtype
+Content-Type: application/json
+
+{
+    "token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoxLCJlbWFpbCI6Im1pY2thZWxya3QyMEBnbWFpbC5jb20iLCJpYXQiOjE3MjI5MzYwNjMsImV4cCI6MTcyMjkzOTY2M30.NxiusznucHOtSMBoig_xm6vFG4cWzozsGZJ9BkDrGuk",
+    "type":"publication"
+}
+
+
+### UPDATE BLOG TYPE
+POST http://localhost:4000/updateblogtype
+Content-Type: application/json
+
+{
+    "idBlogType": "1",
+    "token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoxLCJlbWFpbCI6Im1pY2thZWxya3QyMEBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCR5VzBvNVRYSUVacVFRaERSR2hHQ3IuZjdiU09iMDY1R1NBWC9QTm1zYjJOS0lKc1ZUaUNuLiIsImlhdCI6MTcxNTQ5MzQ0MCwiZXhwIjoxNzE1NDk3MDQwfQ.t1wo53VqqiZ2Zb4RN7IKjOHeyJB9yYyjhpREOqrQkdI",
+    "typeBlog":"article"
+}
+
+
+
+
+
+
+
+
+
+
+####################### BLOG PERSO USER #################################################################################
+# GET ALL BLOG PERSO USER 
+POST https://ecozipo-codesource.onrender.com/getallblogpersouser
+Content-Type: application/json
+
+{
+    "utilisateurId": "6"
+}
+
+
+
+
+### CREATE BLOG PERSO USER
+POST https://ecozipo-codesource.onrender.com/createblogpersouser
+Content-Type: application/json
+
+{
+    "utilisateurId": "6",
+    "titre":"test 7",
+    "description":"desc 7"
+}
+
+
+
+### DELETE BLOG PERSO USER BY ID
+DELETE http://localhost:4000/deleteblogpersouserbyid
+Content-Type: application/json
+
+{
+    "blogPersoUserId": "1"
+}
+
+
+### DELETE ALL BLOG PERSO USER
+DELETE http://localhost:4000/deleteallblogpersouser
+Content-Type: application/json
+
+{
+    "utilisateurId": "6"
+}
+
+
+
+

@@ -1,0 +1,9 @@
+-- DropForeignKey
+ALTER TABLE "Kit" DROP CONSTRAINT "Kit_kitTypeId_fkey";
+
+-- AlterTable
+ALTER TABLE "Kit" ALTER COLUMN "kitTypeId" DROP NOT NULL,
+ALTER COLUMN "kitTypeId" DROP DEFAULT;
+
+-- AddForeignKey
+ALTER TABLE "Kit" ADD CONSTRAINT "Kit_kitTypeId_fkey" FOREIGN KEY ("kitTypeId") REFERENCES "KitType"("id") ON DELETE SET NULL ON UPDATE CASCADE;

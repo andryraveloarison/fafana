@@ -1,0 +1,16 @@
+# https://ecozipo-codesource.onrender.com
+# http://localhost:4000
+
+
+# tsirylandyrasamizafy@gmail.com
+# andrianirinakoloinatsiorintsoa@gmail.com
+# rianalarabe13@gmail.com
+# rantsajonathan@gmail.com
+# mickaelrkt20@gmail.com    
+
+
+
+###################### COMPTE ELECTRICITE EAU CIBLE #######################################################
+#DELETE ALL COMPTE ELECTRICITE EAU CIBLE
+DELETE http://localhost:4000/deletecompteelectriciteeaucible
+

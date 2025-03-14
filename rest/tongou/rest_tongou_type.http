@@ -1,0 +1,54 @@
+# https://ecozipo-codesource.onrender.com
+# http://localhost:4000
+
+# bfa3dc80b4e3d59749zxqg : Bureau
+# bff96527f75046059crdcz : maison
+
+
+
+########################################## KIT TYPE TONGOU ############################################################################
+### get all kit type tongou
+GET https://ecozipo-codesource.onrender.com/getallkittypetongou
+
+
+
+### get kit type tongou by id
+POST http://localhost:4000/getkittypetongoubyid
+Content-Type: application/json
+
+{
+    "kitTypeTongouId": "1"
+}
+
+ 
+ 
+### add kit type tongou
+POST https://ecozipo-codesource.onrender.com/addkittypetongou
+Content-Type: application/json
+
+{
+    "marque": "Disjoncteur connecté à une intelligence artificielle à 6A",
+    "description": "Régulation du courant à 6A avec l’application EcoZipo pour un contrôle optimisé des circuits d’éclairage",
+    "model": "6A",
+    "quantity": "20",
+    "prix": "100",
+    "image": "6A-Photoroom.png",
+    "url": "/kittongou/6A-Photoroom.png"
+}
+
+ 
+ 
+### update kit type tongou
+POST http://localhost:4000/updatekittypetongou
+Content-Type: application/json
+
+{
+    "kitTypeTongouId": "1",
+    "marque": "Disjoncteur connecté à une intelligence artificielle à 6A",
+    "description": "Régulation du courant à 6A avec l’application EcoZipo pour un contrôle optimisé des circuits d’éclairage",
+    "model": "6A",
+    "quantity": "20",
+    "prix": "100",
+    "image": "6A-Photoroom.png",
+    "url": "/kittongou/6A-Photoroom.png"
+}

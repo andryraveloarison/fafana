@@ -1,0 +1,4 @@
+-- AlterTable
+ALTER TABLE "CompteElectriciteEau" ADD COLUMN     "mois1" DOUBLE PRECISION,
+ADD COLUMN     "mois2" DOUBLE PRECISION,
+ADD COLUMN     "mois3" DOUBLE PRECISION;

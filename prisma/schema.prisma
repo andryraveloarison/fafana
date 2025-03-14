@@ -1,0 +1,984 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+
+model Province {
+  id                        Int       @id @default(autoincrement())
+  nom                       String    @unique 
+  createdAt                 DateTime  @default(now())
+  updatedAt                 DateTime  @updatedAt
+
+  province_zone             Zone[]
+}
+
+
+model Zone {
+  id                        Int       @id @default(autoincrement())
+  nom                       String    @unique 
+  provinceId                Int
+  createdAt                 DateTime  @default(now())
+  updatedAt                 DateTime  @updatedAt
+  Province                  Province  @relation(fields: [provinceId], references: [id])
+
+  zone_utilisateur          Utilisateur[]
+  zone_blog                 Blog[]
+}
+
+model TypeUser {
+  id                        Int       @id @default(autoincrement())
+  type                      String   @unique 
+  createdAt                 DateTime  @default(now())
+  updatedAt                 DateTime  @updatedAt
+
+  typeuser_utilisateur      Utilisateur[]
+}
+
+model Utilisateur {
+  id                        Int       @id @default(autoincrement())
+  nom                       String?    
+  pseudo                    String?
+  email                     String         
+  password                  String
+  isValidated               Boolean?  @default(false)
+  validationCode            String?
+  adresse                   String?
+  phone                     String?
+  image                     String?
+  url                       String?
+  public_id                 String?
+  typeUserId                Int
+  zoneId                    Int?
+  nbrAdulte                 Int?
+  nbrEnfant                 Int?
+  createdAt                 DateTime  @default(now())
+  updatedAt                 DateTime  @updatedAt
+
+  statusNotif               Boolean    @default(true)
+
+  Zone                      Zone?      @relation(fields: [zoneId], references: [id])
+  TypeUser                  TypeUser  @relation(fields: [typeUserId], references: [id])
+
+  utilisateur_compte        CompteElectriciteEau[]
+  utilisateur_userAppareil  UserAppareil[]
+  utilisateur_notifBlog     UtilisateurBlogNotif[]
+  utilisateur_historique    Historique[]
+  utilisateur_kitgroupe     KitGroupe[]
+  utilisateur_kitTongouG    KitGroupeTongou[]
+  utilisateur_BlogPersoUser BlogPersoUser[]
+  utilsateur_CommunauteAvis CommunauteAvis[]
+  utilisateur_Notification  Notification[]
+  utilisateur_Analyseia     Analyseia[]
+  utilisateur_Simulationia     Simulationia[]
+
+  CompteElectriciteEau      UserManyCompteElectriciteEau[]
+  user_KitTongouManyUser    KitTongouManyUser[] // liaison user many compte
+  
+}
+
+
+
+
+
+// -----------------------------------------------------------------
+// ---------------------------- COMMUNAUTE ------------------------------
+// -----------------------------------------------------------------
+
+model CommunauteAvis {
+  id                        Int       @id @default(autoincrement())
+  avis                      String    @default("Je suis content")
+  statistique               Int       @default(1)
+  utilisateurId             Int?
+  createdAt                 DateTime  @default(now())
+  updatedAt                 DateTime  @updatedAt
+
+  Utilisateur               Utilisateur?   @relation(fields: [utilisateurId], references: [id])
+
+}
+
+
+
+// // -----------------------------------------------------------------
+// // ------------------ NOTIFICATION ECOZIPO -------------------------
+// // -----------------------------------------------------------------
+// model Notification {
+//   id                        Int       @id @default(autoincrement())
+//   message                   String 
+//   type                      String   
+
+//   utilisateurId             Int?
+//   kitTongouId               Int?
+//   compteElectriciteId       Int?
+//   createdAt                 DateTime  @default(now())
+//   updatedAt                 DateTime  @updatedAt
+
+//   KitTongou                 KitTongou?   @relation(fields: [kitTongouId], references: [id])
+//   CompteElectriciteEau      CompteElectriciteEau?   @relation(fields: [compteElectriciteId], references: [id])
+// }
+
+
+
+
+
+
+// -----------------------------------------------------------------
+// ----------------------- NOTIFICATION ----------------------------
+// -----------------------------------------------------------------
+model Notification {
+  id                        Int       @id @default(autoincrement())
+  titre                     String
+  description               String
+  blogId                    Int? 
+  analyseaiId               Int?
+  type                      String @default("standart") // standart / IA  
+  isSonor                   Boolean @default(false)
+  isTouched                 Boolean @default(false)
+
+  utilisateurId             Int?
+  createdAt                 DateTime  @default(now())
+  updatedAt                 DateTime  @updatedAt
+
+  Utilisateur               Utilisateur?   @relation(fields: [utilisateurId], references: [id])  
+  Blog                      Blog?   @relation(fields: [blogId], references: [id]) 
+  Analyseia                 Analyseia?   @relation(fields: [analyseaiId], references: [id])  
+}
+
+
+
+
+
+// -----------------------------------------------------------------
+// ----------------------- ANALYSE IA   ----------------------------
+// -----------------------------------------------------------------
+model Analyseia {
+  id                        Int       @id @default(autoincrement())
+  titre                     String
+  analyse                   String
+  utilisateurId             Int?
+  start_time                String?
+  end_time                  String?
+  
+  createdAt                 DateTime  @default(now())
+  updatedAt                 DateTime  @updatedAt
+
+  Utilisateur               Utilisateur?   @relation(fields: [utilisateurId], references: [id])  
+
+  Notification_analiyseia   Notification[]
+}
+
+
+model Simulationia {
+  id                        Int       @id @default(autoincrement())
+  titre                     String
+  totalPersonne             Int
+  nbEnfant                  Int
+  nbAdulte                  Int
+  consommation              Float
+  listeAppareil             String
+  utilisateurId             Int?     @unique
+  recommandation            String
+  depense                   String
+  tarif                     Int
+  createdAt                 DateTime  @default(now())
+  updatedAt                 DateTime  @updatedAt
+
+  Utilisateur               Utilisateur?   @relation(fields: [utilisateurId], references: [id])  
+
+}
+
+
+
+
+
+// -----------------------------------------------------------------
+// ----------------------- DISCUSSION ----------------------------
+// -----------------------------------------------------------------
+model Message {
+  id                        Int       @id @default(autoincrement())
+  message                   String
+  senderId                  Int
+  receiverId                Int
+  createdAt                 DateTime  @default(now())
+  updatedAt                 DateTime  @updatedAt
+ }
+
+
+
+
+// -----------------------------------------------------------------
+// ----------------------- HISTORIQUE ----------------------------
+// -----------------------------------------------------------------
+model Historique {
+  id                        Int           @id @default(autoincrement())
+  description               String   
+  utilisateurId             Int
+  action                    String
+  createdAt                 DateTime      @default(now())
+  updatedAt                 DateTime      @updatedAt
+
+  Utilisateur               Utilisateur   @relation(fields: [utilisateurId], references: [id])
+}
+
+
+
+
+
+
+
+
+
+
+
+// -----------------------------------------------------------------
+// ---------------------------- BLOG -------------------------------
+// -----------------------------------------------------------------
+
+model TypeBlog {
+  id                        Int       @id @default(autoincrement())
+  type                      String    @unique
+  createdAt                 DateTime  @default(now())
+  updatedAt                 DateTime  @updatedAt
+
+  typeblog_blog             Blog[]
+}
+
+model Blog {
+  id                        Int       @id @default(autoincrement())
+  titre                     String    
+  description               String
+  lien                      String?
+  zoneId                    Int? 
+  reaction                  Int
+  image                     String
+  url                       String
+  typeBlogId                Int
+  public_id                 String?
+  status                    String    @default("default")
+  createdAt                 DateTime  @default(now())
+  updatedAt                 DateTime  @updatedAt
+
+  TypeBlog                  TypeBlog  @relation(fields: [typeBlogId], references: [id])
+  Zone                      Zone?     @   relation(fields: [zoneId], references: [id])
+
+  blog_notifBlog            UtilisateurBlogNotif[]
+  blog_BlogAgence           BlogAgence[]
+  blog_Notification         Notification[]
+}
+
+model UtilisateurBlogNotif {
+  id                      Int          @id @default(autoincrement())
+  utilisateurId           Int?
+  blogId                  Int
+
+  Utilisateur             Utilisateur?  @relation(fields: [utilisateurId], references: [id])
+  Blog                    Blog         @relation(fields: [blogId], references: [id])
+  
+}
+
+model BlogAgence {
+  id                      Int          @id @default(autoincrement())
+  agence                  String?
+  blogId                  Int
+
+  Blog                    Blog         @relation(fields: [blogId], references: [id])
+  
+}
+
+
+model BlogPersoUser {
+  id                        Int       @id @default(autoincrement())
+  titre                     String
+  description               String
+  utilisateurId             Int    
+  createdAt                 DateTime  @default(now())
+  updatedAt                 DateTime  @updatedAt
+
+  utilisateur               Utilisateur             @relation(fields: [utilisateurId], references: [id])
+ }
+
+
+
+// -----------------------------------------------------------------
+// ---------------------------- EXPERT------------------------------
+// -----------------------------------------------------------------
+
+model TypeExpert {
+  id                        Int       @id @default(autoincrement())
+  type                      String    @unique
+  createdAt                 DateTime  @default(now())
+  updatedAt                 DateTime  @updatedAt
+
+  experts                   Expert[]  @relation("ExpertTypeExpert")
+}
+
+model Expert {
+  id                        Int           @id @default(autoincrement())
+  nom                       String        
+  prenom                    String
+  tel1                      String
+  tel2                      String?
+  email                     String?
+  adresse                   String
+  image                     String
+  url                       String
+  createdAt                 DateTime      @default(now())
+  updatedAt                 DateTime      @updatedAt
+
+
+  typeExperts               TypeExpert[]  @relation("ExpertTypeExpert")
+}
+
+
+
+
+
+
+// -----------------------------------------------------------------
+// ------------------------ SIMULATION -----------------------------
+// -----------------------------------------------------------------
+model Materiel {
+  id                        Int       @id @default(autoincrement())
+  nom                       String   
+
+  createdAt                 DateTime  @default(now())
+  updatedAt                 DateTime  @updatedAt
+
+  MaterielToTypeHome_Materiel    MaterielToTypeHome[]
+}
+
+
+model TypeHome {
+  id                        Int       @id @default(autoincrement())
+  nom                       String   
+  
+  createdAt                 DateTime  @default(now())
+  updatedAt                 DateTime  @updatedAt
+
+  MaterielToTypeHom_Materiel    MaterielToTypeHome[]
+
+}
+
+
+model MaterielToTypeHome {
+  id                        Int       @id @default(autoincrement())
+  typehomeId                Int
+  materielId                Int
+
+  TypeHome                  TypeHome   @relation(fields: [typehomeId], references: [id], onDelete: Cascade)
+  Materiel                  Materiel   @relation(fields: [materielId], references: [id], onDelete: Cascade)
+
+  CompteMateriel_materiel    CompteMateriel[]
+}
+
+
+model CompteMateriel {
+  id                          Int       @id @default(autoincrement())
+  compteElectriciteEauCibleId Int
+  materieltotypehomeId        Int
+  
+  createdAt                   DateTime  @default(now())
+  updatedAt                   DateTime  @updatedAt
+
+  CompteElectriciteEau        CompteElectriciteEau? @relation(fields: [compteElectriciteEauCibleId], references: [id])
+  MaterielToTypeHome          MaterielToTypeHome? @relation(fields: [materieltotypehomeId], references: [id])
+
+}
+
+
+
+
+// -----------------------------------------------------------------
+// ------------------- PARTIE ELECTRICITE --------------------------
+// -----------------------------------------------------------------
+model CompteElectriciteEau {
+  id                        Int             @id @default(autoincrement())
+  pseudoCompte              String
+  titulaire                 String    
+  referenceClient           String
+  agence                    String
+  communeClient             Int
+  commune                   String
+  categorie                 String
+  zoneId                    String
+
+  compteurElectricite       String?
+  tarif                     String?
+  puissance                 Float?
+  activite                  String?
+
+  compteurEau               String?
+  tarifEau                  String?
+  calibrage                 Int?
+  redevanceEau              Float?
+  activiteEau               String?
+
+  indiceTrance              Int @default(1)
+
+  mois1                     Float?
+  mois2                     Float?
+  mois3                     Float?
+  consoDernierMoisKit       Float?
+
+  dateReleve                String?
+  joursConsommation          Int?
+  consommationInitial       Float?
+
+
+  typeCompte                String?
+  utilisateurId             Int
+
+  puissanceWatt             Float?
+  intensite                 Float?
+  tension                   Float?
+
+  statusDisjoncteur         Boolean?         @default(false)
+
+  compteCibleId             Int?
+
+  createdAt                 DateTime         @default(now())
+  updatedAt                 DateTime         @updatedAt
+
+
+
+  Utilisateur               Utilisateur                @relation(fields: [utilisateurId], references: [id])
+  CompteElectriciteEauCible CompteElectriciteEauCible? @relation(fields: [compteCibleId], references: [id])
+
+
+  compte_appareil           UserAppareil[]
+  Calcul_CoompteE           CalculElectriciteEau[]
+  kitTongouUser             KitTongouUser[]
+
+
+ userManyCompteElectriciteEau    UserManyCompteElectriciteEau[]
+ compte_KitTongouManyUser        KitTongouManyUser[] // liaison compte many user
+ CompteElectriciteEau_autoReleve AutoReleve[]  // auto releve
+//  compteElectricite_Notification  Notification[]  // notification
+ CompteElectriciteEau_KitTongouAutoReleve KitTongouAutoReleve[] // auto releve kit
+ CompteElectriciteEau_CompteMateriel CompteMateriel[] // simulation
+}
+
+
+
+
+model AutoReleve {
+  id                        Int       @id @default(autoincrement())
+  compteElectriciteEauId    Int
+  ancienIndex               Float
+  consommationKit           Float
+  totalConsommation         Float
+  nouveauIndex              Float
+  reste                     Float
+  joursConsommation         Int
+  prix                      Float
+  dateAncienIndex           DateTime
+  dateNouveauIndex          DateTime
+
+  createdAt                 DateTime  @default(now())
+  updatedAt                 DateTime  @updatedAt
+
+  CompteElectriciteEau      CompteElectriciteEau?   @relation(fields: [compteElectriciteEauId], references: [id])
+}       
+
+
+
+
+model CompteElectriciteEauCible {
+  id                        Int             @id @default(autoincrement())
+  code_agence               String   
+  referenceClient           String
+  jan                       Float
+  fev                       Float
+  mars                      Float
+  avril                     Float
+  somme                     Float
+  tarif                     String?
+  designation               String?
+  categorie                 Int?
+  type                      String?
+  classement                Int
+  createdAt                 DateTime         @default(now())
+  updatedAt                 DateTime         @updatedAt
+
+  compteElectriciteEau_cible CompteElectriciteEau[]
+}
+
+
+model UserManyCompteElectriciteEau {
+  utilisateurId             Int
+  compteElectriciteEauId    Int
+  valid                     Boolean                @default(false)
+
+  Utilisateur               Utilisateur            @relation(fields: [utilisateurId], references: [id], onDelete: Cascade)
+  CompteElectriciteEau      CompteElectriciteEau   @relation(fields: [compteElectriciteEauId], references: [id], onDelete: Cascade)
+
+  @@id([utilisateurId, compteElectriciteEauId]) // Clé primaire composite
+}
+
+
+model CalculElectriciteEau {
+  id                        Int             @id @default(autoincrement())
+  compteElectriciteEauId    Int
+  prixElectricite           Float
+  prixEau                   Float
+  consommationElectricite   Float
+  consommationEau           Float
+  
+  nouvelElectricite         Float
+  ancienElectricite         Float
+  primeElectricite          Float
+  redevanceElectricite      Float
+  taxe_communaleElectricite Float
+  surtaxeElectricite        Float
+  fneElectricite            Float
+  tvaElectricite            Float
+
+  nouvelEau                 Float
+  ancienEau                 Float
+  primeEau                  Float
+  redevanceEau              Float
+  taxe_communaleEau         Float
+  surtaxeEau                Float
+  redevance_eau_usee_taxe   Float
+  tva_eau                   Float
+  
+  total                     Float
+  status                    Boolean          @default(false)
+
+  createdAt                 DateTime         @default(now())
+  updatedAt                 DateTime         @updatedAt
+
+  CompteElectriciteEau      CompteElectriciteEau  @relation(fields: [compteElectriciteEauId], references: [id])
+
+}
+
+
+
+
+model Tarif {
+  id                        Int              @id @default(autoincrement())
+  tarif                     String           @unique
+  nom                       String
+  type                      String? 
+  createdAt                 DateTime         @default(now())
+  updatedAt                 DateTime         @updatedAt
+}
+
+
+model Fne {
+  id                        Int       @id @default(autoincrement())
+  tarif                     String    @unique
+  t1                        Float
+  t2                        Float
+  t3                        Float
+  t4                        Float
+  createdAt                 DateTime  @default(now())
+  updatedAt                 DateTime  @updatedAt
+}
+
+model Agence {
+  id                        Int       @id @default(autoincrement())
+  agenceCode                String    
+  agence                    String
+  tourneId                  String
+  communeId                 Int
+  commune                   String
+  zoneId                    String
+  province                  String?    
+  createdAt                 DateTime  @default(now())
+  updatedAt                 DateTime  @updatedAt
+}
+
+
+model Prix {
+  id                        Int       @id @default(autoincrement())
+  zoneId                    String   
+  tarif                     String
+  q1                        Float
+  q2                        Float
+  q3                        Float
+  q4                        Float
+  p1                        Float
+  p2                        Float
+  p3                        Float
+  p4                        Float
+  prime                     Float
+  redevance                 Float
+  createdAt                 DateTime  @default(now())
+  updatedAt                 DateTime  @updatedAt
+}
+
+
+model Taxe {
+  id                        Int       @id @default(autoincrement())
+  site                      String   
+  communeId                 String
+  activite                  String
+  type_taxe                 Int
+  taxe_communale            Float
+  type_surtaxe              Int
+  surtaxe                   Float
+  zone_suratxe              String
+  redevanceeauusee          Int
+  createdAt                 DateTime  @default(now())
+  updatedAt                 DateTime  @updatedAt
+}
+
+
+model ZoneElectriciteEau {
+  id                        Int       @id @default(autoincrement())
+  code                      String   
+  zone                      String
+  createdAt                 DateTime  @default(now())
+  updatedAt                 DateTime  @updatedAt
+}
+
+
+// -----------------------------------------------------------------
+// ------------------------ PARTIE EAU -----------------------------
+// -----------------------------------------------------------------
+model Calibrage {
+  id                        Int       @id @default(autoincrement())
+  calibrage                 Int   
+  redevance                 Float
+  createdAt                 DateTime  @default(now())
+  updatedAt                 DateTime  @updatedAt
+}
+
+
+
+
+// -----------------------------------------------------------------
+// ------------------- PARTIE APPAREIL TONGOU --------------------------
+// -----------------------------------------------------------------
+model KitTongou {
+  id                        Int       @id @default(autoincrement())
+  idKitTongou               String
+  name                      String
+  pseudo                    String?
+  online                    Boolean   @default(false)
+  product_id                String
+  product_name              String 
+  icon                      String
+  category                  String
+  status                    Boolean   @default(false)
+  kitTypeId                 Int?
+  kitTypeTongouId           Int?
+  blocked                   Boolean   @default(false)
+  KitGroupeTongouId         Int?      
+  kitOnOff                  Boolean   @default(false) 
+  dateOffline               DateTime?
+  consommationInitial       Float?
+
+  createdAt                 DateTime  @default(now())
+  updatedAt                 DateTime  @updatedAt
+
+  KitType                   KitType?   @relation(fields: [kitTypeId], references: [id])
+  KitGroupeTongou           KitGroupeTongou?       @relation(fields: [KitGroupeTongouId], references: [id])
+  KitTypeTongou             KitTypeTongou?       @relation(fields: [kitTypeTongouId], references: [id])
+
+  kitTongouUser             KitTongouUser[]
+  KitValeurBut_Kit          KitValeurBut[]
+  kitTongou_Weather         WeatherKit[]
+  kitTongou_Task            KitTongouTask[] // tache programmée
+  kitTongou_KitTongouManyUser KitTongouManyUser[] // user many compte
+  kitTongou_KitTongouLimiteHybride KitTongouLimiteHybride[] // limite hybride
+  
+}       
+
+
+model KitGroupeTongou{
+  id                        Int              @id @default(autoincrement())
+  groupe                    String
+  utilisateurId             Int?  
+  status                    String
+  createdAt                 DateTime         @default(now())
+  updatedAt                 DateTime         @updatedAt
+
+  Utilisateur               Utilisateur?     @relation(fields: [utilisateurId], references: [id])
+  
+
+  KitTongou                 KitTongou[]
+}
+
+model KitTongouUser {
+  id                        Int       @id @default(autoincrement())
+  utilisateurId             Int    
+  kitTongouId               Int
+  compteElectriciteEauId    Int?
+  princiapleHybride         Boolean   @default(false)
+  createdAt                 DateTime  @default(now())
+  updatedAt                 DateTime  @updatedAt
+
+  KitTongou                 KitTongou             @relation(fields: [kitTongouId], references: [id])
+  CompteElectriciteEau      CompteElectriciteEau? @relation(fields: [compteElectriciteEauId], references: [id])
+}
+
+
+
+// Limite kit hybride
+model KitTongouLimiteHybride {
+  id                        Int       @id @default(autoincrement())
+  kitTongouId               Int
+  tranche1                  Float?
+  tranche2                  Float?
+  tranche3                  Float?
+  tranche4                  Float?
+  createdAt                 DateTime  @default(now())
+  updatedAt                 DateTime  @updatedAt
+
+  KitTongou                 KitTongou             @relation(fields: [kitTongouId], references: [id])
+}
+
+
+
+
+ // 
+// USER MANY COMPTE ELECTRICITE EAU
+// 
+model KitTongouManyUser {
+  kitTongouId               Int
+  utilisateurId             Int
+  compteElectriciteEauId    Int
+  valid                     Boolean                @default(false)
+
+  Utilisateur               Utilisateur            @relation(fields: [utilisateurId], references: [id], onDelete: Cascade)
+  CompteElectriciteEau      CompteElectriciteEau   @relation(fields: [compteElectriciteEauId], references: [id], onDelete: Cascade)
+  KitTongou                 KitTongou              @relation(fields: [kitTongouId], references: [id])
+
+  @@id([utilisateurId, compteElectriciteEauId, kitTongouId]) // Clé primaire composite
+}
+
+
+model KitTongouAutoReleve {
+  id                        Int       @id @default(autoincrement())
+  compteElectriciteEauId    Int
+  ancienIndex               Float
+  consommationKit           Float
+  totalConsommation         Float
+  nouveauIndex              Float
+  reste                     Float
+  joursConsommation         Int
+  prix                      Float
+  dateAncienIndex           DateTime
+  dateNouveauIndex          DateTime
+
+  createdAt                 DateTime  @default(now())
+  updatedAt                 DateTime  @updatedAt
+
+   CompteElectriciteEau      CompteElectriciteEau?   @relation(fields: [compteElectriciteEauId], references: [id])
+}     
+
+      
+
+
+
+
+model KitTongouTask {
+  id                        Int       @id @default(autoincrement())
+  kitTongouId               Int
+  aliasName                 String?
+  date                      String
+  enable                    Boolean @default(true)  
+  value                     String
+  loops                     String
+  timerId                   Int
+  timezoneId                String
+
+  createdAt                 DateTime  @default(now())
+  updatedAt                 DateTime  @updatedAt
+
+  KitTongou                 KitTongou?   @relation(fields: [kitTongouId], references: [id])
+} 
+
+
+
+
+model KitValeurBut{
+  id                        Int       @id @default(autoincrement())
+  kitTongouId               Int       
+  status                    Boolean   @default(false)
+  consommationMin           Float?    
+  tranche                   Float?
+  pourcentageTranche        String?
+  consommationBut           Float?
+  consommationJour          Float?  
+  consommationHeure         Float?
+  msg1                      Boolean   @default(false)
+  msg2                      Boolean   @default(false)
+  msg3                      Boolean   @default(false)
+
+  typeValeurBut             Boolean   @default(false) // false : valeur par défaut, true : valeur personnalisée
+  modeGestionId             Int?      
+
+  createdAt                 DateTime  @default(now())
+  updatedAt                 DateTime  @updatedAt
+
+  KitTongou                 KitTongou?   @relation(fields: [kitTongouId], references: [id])
+  modeGestion               ModeGestion?   @relation(fields: [modeGestionId], references: [id])
+}
+
+
+model ModeGestion {
+  id                        Int       @id @default(autoincrement())
+  mode                      String
+  pourcent                  Float
+  createdAt                 DateTime  @default(now())
+  updatedAt                 DateTime  @updatedAt
+
+  KitValeurBut_model        KitValeurBut[]
+
+}
+
+
+model WeatherKit {
+  id                        Int       @id @default(autoincrement())
+  kitTongouId               Int?
+  lon                       Float
+  lat                       Float
+  city                      String
+  country                   String
+  region                    String
+  description               String
+  humidity                  Float
+  temperature               Float
+  windSpeed                 Float
+  createdAt                 DateTime  @default(now())
+  updatedAt                 DateTime  @updatedAt
+
+
+  KitTongou                 KitTongou?   @relation(fields: [kitTongouId], references: [id])
+}
+ 
+
+model KitType{
+  id                        Int       @id @default(autoincrement())
+  type                      String  
+  createdAt                 DateTime  @default(now())
+  updatedAt                 DateTime  @updatedAt
+
+  KitType_Kit               Kit[]
+  KitType_KitTongou         KitTongou[] 
+}
+
+
+
+model KitTypeTongou{
+  id                        Int       @id @default(autoincrement())
+  marque                    String  
+  description               String
+  model                     String
+  quantity                  Int?
+  prix                      Float?
+  image                     String?   
+  url                       String?   
+  createdAt                 DateTime  @default(now())
+  updatedAt                 DateTime  @updatedAt
+
+  KitTypeTongou_KitTypeTongou  KitTongou[]
+}
+
+
+
+
+// -----------------------------------------------------------------
+// ------------------- PARTIE APPAREIL OGEMRAY --------------------------
+// -----------------------------------------------------------------
+
+model KitValeur{
+  id                        Int       @id @default(autoincrement())
+  t1                        Float    
+  t2                        Float
+  t3                        Float
+  t4                        Float
+  kitId                     Int
+  createdAt                 DateTime  @default(now())
+  updatedAt                 DateTime  @updatedAt
+
+  Kit                       Kit   @relation(fields: [kitId], references: [id])
+}
+
+
+
+
+
+model Kit{
+  id                        Int       @id @default(autoincrement())
+  DID                       Int       
+  DMac                      String  
+  Name                      String
+  DeviceType                String
+  DeviceTypeName            String
+  DeviceModel               String 
+  kitStatus                 Boolean   @default(false) 
+  status                    Boolean   @default(false)
+  statusMain                Boolean   @default(false)
+  kitTypeId                 Int?
+  consommationMin           Float?    
+  tranche                   Float?
+  pourcentageTranche        String?
+  consommationBut           Float?
+  consommationJour          Float?  
+  consommationHeure         Float?
+  createdAt                 DateTime  @default(now())
+  updatedAt                 DateTime  @updatedAt
+
+  KitType                   KitType?   @relation(fields: [kitTypeId], references: [id])
+
+
+  UserAppareil              UserAppareil[]
+  KitValeur_Kit             KitValeur[]
+  KitNotifStatus_Kit        kitNotifStatus[]
+}
+
+
+model kitNotifStatus{
+  id                        Int       @id @default(autoincrement())
+  kitId                     Int       
+  status1                   Boolean   @default(false)
+  status2                   Boolean   @default(false)
+  status3                   Boolean   @default(false)
+  status4                   Boolean   @default(false)
+  d1                        Boolean   @default(false)
+  d2                        Boolean   @default(false)
+  d3                        Boolean   @default(false)
+  d4                        Boolean   @default(false)
+  createdAt                 DateTime  @default(now())
+  updatedAt                 DateTime  @updatedAt
+
+  Kit                       Kit   @relation(fields: [kitId], references: [id])
+}
+
+model KitGroupe{
+  id                        Int       @id @default(autoincrement())
+  kitgroupe                 String       
+  utilisateurId             Int?  
+  status                    String
+  createdAt                 DateTime  @default(now())
+  updatedAt                 DateTime  @updatedAt
+
+  Utilisateur               Utilisateur?           @relation(fields: [utilisateurId], references: [id])
+
+  kitgroupe_userappareil    UserAppareil[]
+}
+
+
+model UserAppareil {
+  id                        Int       @id @default(autoincrement())
+  utilisateurId             Int    
+  kitId                     Int
+  compteElectriciteEauId    Int?
+  kitGroupeId               Int?
+  createdAt                 DateTime  @default(now())
+  updatedAt                 DateTime  @updatedAt
+
+  Kit                       Kit                   @relation(fields: [kitId], references: [id])
+  KitGroupe                 KitGroupe?             @relation(fields: [kitGroupeId], references: [id])
+  Utilisateur               Utilisateur           @relation(fields: [utilisateurId], references: [id])
+  CompteElectriciteEau      CompteElectriciteEau? @relation(fields: [compteElectriciteEauId], references: [id])
+}

@@ -1,0 +1,272 @@
+# https://ecozipo-codesource.onrender.com
+# http://localhost:4000
+
+# bfa3dc80b4e3d59749zxqg : Bureau
+# bff96527f75046059crdcz : maison ancien
+
+# bfbfdd93245b026a5arp3h 24 @ netsika (68)
+
+###################### TONGOU ############################################################################ 
+GET http://localhost:4000/gettokentongou
+
+
+
+### GET ALL KIT IN SERVER TONGOU
+GET http://localhost:4000/getallkittongou
+
+
+
+### GET ALL KIT IN SERVER TONGOU
+GET http://localhost:4000/getassetsinformation
+
+
+
+####################### ECOZIPO ########################################################################## 
+### GET ALL KIT
+GET https://ecozipo-codesource.onrender.com/getallkitecozipotongou
+
+
+
+### ADD KIT TONGOU IN ECOZIPO
+POST https://ecozipo-codesource.onrender.com/addkittongouinecozipo
+Content-Type: application/json
+
+{
+    "idKitTongou": "bf3a2633422c9745c6b3ve",
+    "kitTypeId":"1",
+    "kitTypeTongouId":"8"
+}
+
+
+
+
+### UPDATE KIT TONGOU IN ECOZIPO
+POST http://localhost:4000/updatekittongouinecozipo
+Content-Type: application/json
+
+{
+    "idKitTongou": "bf97a670a088fa909f5ybe",
+    "pseudo": "",
+    "kitTypeTongouId": "7"
+}
+
+
+
+#######################  KIT TONGOU ECOZIPO TYPE ############################################################################ 
+### GET ALL KIT TONGOU ECOZIPO TYPE
+GET https://ecozipo-codesource.onrender.com/getallkittype  
+
+
+### UPDATE KIT TONGOU IN ECOZIPO
+POST http://localhost:4000/getkittypebyid
+Content-Type: application/json
+
+{
+    "kitTypeId": "1"
+}
+
+
+### UPDATE KIT TONGOU IN ECOZIPO
+PUT http://localhost:4000/createkittype
+Content-Type: application/json
+
+{
+    "type": "disjoncteur"
+}
+
+
+
+
+
+
+
+
+
+#######################  KIT GROUPE TONGOU ECOZIPO ############################################################################ 
+### GET ALL KIT TONGOU GROUPE IN ECOZIPO
+GET https://ecozipo-codesource.onrender.com/getallkitgroupetongou  
+
+
+
+### GET ALL KIT TONGOU GROUPE IN ECOZIPO
+POST http://localhost:4000/gettongougroupebyuser
+Content-Type: application/json
+
+{
+    "utilisateurId": "6"
+}
+
+
+
+### CREATE KIT TONGOU GROUPE IN ECOZIPO
+POST https://ecozipo-codesource.onrender.com/createkitgroupetongou
+Content-Type: application/json
+
+{
+    "groupe": "Maison Kol",
+    "utilisateurId": "3"
+}
+
+
+
+### UPDATE NAME GROUPE KIT
+POST http://localhost:4000/updatenamekittongougroupe
+Content-Type: application/json
+
+{
+    "groupe": "defaut",
+    "utilisateurId": "",
+    "KitGroupeTongouId":"1"
+}
+
+
+
+### UPDATE KIT TONGOU IN ECOZIPO
+POST https://ecozipo-codesource.onrender.com/updategroupetongouinkit  
+
+
+
+
+
+
+
+
+####################### ON & OFF KIT  |  BLOCKED KIT  ############################################################################ 
+### CONTROL KIT TONGOU : ON / OFF
+POST http://localhost:4000/controlkittongou
+Content-Type: application/json
+
+{
+    "device_id": "bff96527f75046059crdcz",
+    "value":"true"
+}
+
+
+### BLOCKED KIT
+POST http://localhost:4000/blockedkit
+Content-Type: application/json
+
+{
+    "idKitTongou": "bff96527f75046059crdcz",
+    "blocked": true
+}
+
+
+
+
+
+####################### TOTAL USAGE  ############################################################################ 
+### GET TOTAL USAGE KIT TONGOU
+POST http://localhost:4000/gettotalusagekittongou
+Content-Type: application/json
+
+{
+    "device_id": "bfa3dc80b4e3d59749zxqg"
+}
+
+
+
+
+
+
+####################### CONTROL KIT ############################################################################ 
+### GET STATUS KIT TONGOU 
+### switch, countdown_1, add_ele, cur_current, cur_power, cur_voltage, test_bit, 
+### voltage_coe, electric_coe, power_coe, electricity_coe
+### fault, relay_status, light_mode, child_lock, cycle_time, temp_value, alarm_set_1, alarm_set_2, online_state
+# bfa3dc80b4e3d59749zxqg : Bureau
+# bff96527f75046059crdcz : maison ancien
+POST http://localhost:4000/getstatuskittongou
+Content-Type: application/json
+
+{
+    "device_id": "bff96527f75046059crdcz",
+    "code":"cur_power"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+####################### STATISTIC KIT ############################################################################ 
+### GET STATISTIC KIT TONGOU
+POST https://ecozipo-codesource.onrender.com/getstatisticskittongou
+Content-Type: application/json
+
+{
+    "device_id": "bfa3dc80b4e3d59749zxqg",
+    "code":"add_ele",
+    "start_time":"2025021800",
+    "end_time":"2025021823",
+    "stat_type":"sum",
+    "time_type":"hours"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+####################### FORMATED DATE ############################################################################ 
+### FORMATED DATE
+POST http://localhost:4000/formateddate
+Content-Type: application/json
+
+{
+    "date": "30/12/2024"
+}
+
+
+
+
+
+#######################  NOTIFICATION ############################################################################ 
+### DELETE ALL NOTIFICATION
+DELETE http://localhost:4000/deleteallnotification   
+
+
+
+
+
+
+
+
+#######################  NOTIFICATION CONSOMMATION ############################################################################ 
+### SEND NOTIFICATION BY DAY
+POST http://localhost:4000/testNotif  
+
+
+

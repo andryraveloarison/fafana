@@ -1,0 +1,93 @@
+# https://ecozipo-codesource.onrender.com
+# http://localhost:4000
+
+
+# tsirylandyrasamizafy@gmail.com
+# andrianirinakoloinatsiorintsoa@gmail.com
+# rianalarabe13@gmail.com
+# rantsajonathan@gmail.com
+# mickaelrkt20@gmail.com    
+# ecozipo@gmail.com | xanHod-7zedci-xehmod
+
+# bfa3dc80b4e3d59749zxqg : Bureau
+# bff96527f75046059crdcz : ancien
+# bf97a670a088fa909f5ybe : nouveau compte principale maison youssouf (id 4)
+# bfa8cbeabe840627eay2sh : secteur 02 maison youssouf (id 9)
+# bfa6b3c635b2c0dd14q8hs : secteur 02 maison youssouf (id 11)
+# bf5932770f24c12602nams : delete pour teste groupe
+
+# bf0472e30a7dd94d38qxjy : kit koloina ( id(3) - compte(14) - kit(66) )
+# bf16db50f054d26bf18p7f : Hybride pour koloina ( id(3) - compte(14) - kit(58) )
+# bfb5228cb08652a25cpf9u : Hybride pour rianala ( id(3) - compte(14) - kit(67) ) // id rianala 4
+
+
+### LOGIN
+POST http://localhost:4000/login
+Content-Type: application/json
+
+{
+    "email": "ecozipo@gmail.com",
+    "password": "xanHod-7zedci-xehmod"
+}
+
+    
+
+
+
+
+###################### Liaision User To Kit #######################################################
+
+
+### LIER USER TO KIT
+POST http://localhost:4000/linkusertokittongou
+Content-Type: application/json
+
+{
+    "utilisateurId" : "4",
+    "kitTongouId": "bfb5228cb08652a25cpf9u"
+}
+
+
+### GET ALL USER NEED VALIDATION
+POST http://localhost:4000/getalluserneedvalidationtoconnectedbykittongou
+Content-Type: application/json
+
+{
+    "utilisateurId" : "3"
+}
+
+
+
+### GET ALL USER USED MY KIT
+POST http://localhost:4000/getalluserusedmykittongou
+Content-Type: application/json
+
+{
+    "utilisateurId" : "6"
+}
+
+
+
+
+
+### VALIDE DEMANDE UTILISATEUR
+POST http://localhost:4000/validdemandeuserkit
+Content-Type: application/json
+
+{
+    "utilisateurId" : "4",
+    "kitTongouId": "3",
+    "compteElectriciteEauId": "14"
+}
+
+
+
+### DELETE ACCES USER IN KIT
+DELETE http://localhost:4000/deleteuserusemykit
+Content-Type: application/json
+
+{
+    "utilisateurId" : "6",
+    "kitTongouId": "6",
+    "compteElectriciteEauId": "14"
+}

@@ -1,0 +1,67 @@
+# https://ecozipo-codesource.onrender.com
+# http://localhost:4000
+
+# bfa3dc80b4e3d59749zxqg : Bureau
+# bff96527f75046059crdcz : maison ancien
+
+# bfbfdd93245b026a5arp3h 24 @ netsika (68)
+
+
+
+####################### STATISTIC KIT ############################################################################ 
+### GET STATISTIC KIT TONGOU
+#type : hour, daily, week
+POST http://localhost:4000/getallstatisticskittongouforia
+Content-Type: application/json
+
+{
+    "device_id": "bfa3dc80b4e3d59749zxqg",
+    "type":"hour"
+}
+
+
+
+### DETECTER SURCONSOMMATION WEEK
+POST http://localhost:4000/detectsurconsommationweek
+Content-Type: application/json
+
+{
+    "device_id": "bfa3dc80b4e3d59749zxqg",
+    "date":"2025-02-12"
+}
+
+
+
+### SEND NOTIFICATION
+POST http://localhost:4000/sendnotificationsurconsommationweek
+Content-Type: application/json
+
+{
+    "utilisateurId": "bfa3dc80b4e3d59749zxqg",
+    "message":""
+}
+
+
+
+
+
+### SEND STATISTIC WEEK
+POST http://localhost:4000/sendstatistickitweek
+Content-Type: application/json
+
+
+
+### SEND STATISTIC DAYS
+POST http://localhost:4000/sendstatistickitdays
+Content-Type: application/json
+
+
+### SEND STATISTIC HOURS
+POST http://localhost:4000/sendstatistickithours
+Content-Type: application/json
+
+
+
+
+
+

@@ -1,0 +1,994 @@
+####################### DELETE ALL DATA DATABASE ############################################################################
+### 
+DELETE  http://localhost:4000/deletealldatabd
+Content-Type: application/json
+
+
+
+
+####################### TYPE GROUPE APPAREIL OTHER SERVER #################################################################################
+### GET ALL GROUPE APPAREIL
+GET http://192.168.1.175:4000/getallgroupe
+
+### GET ALL KIT APPAREIL
+GET http://localhost:4000/getallkit
+
+
+
+### GET GROUPE BY ID
+POST http://localhost:4000/getgroupebyid
+Content-Type: application/json
+
+{
+    "typeId": "1"
+}
+
+### GET KIT BY ID
+POST http://localhost:4000/getkitbyid
+Content-Type: application/json
+
+{
+    "idAppareil": "1"
+}
+
+
+
+### CREATE GROUPE APPAREIL
+PUT http://localhost:4000/creategroupe
+Content-Type: application/json
+
+{
+    "type": "secteur 2",
+    "prix":"2000"
+}
+
+### CREATE KIT APPAREIL
+PUT http://localhost:4000/createkit
+Content-Type: application/json
+
+{
+    "reference": "012349456",
+    "nom":"Kit secteur 1",
+    "typeId":"2"
+}
+
+
+
+### UPDATE GROUPE APPAREIL 
+POST http://localhost:4000/updategroupe
+Content-Type: application/json
+
+{
+    "typeId": "2",
+    "type": "",
+    "prix":"3000"
+}
+
+### UPDATE KIT APPAREIL
+POST http://localhost:4000/updatekit
+Content-Type: application/json
+
+{
+    "appareilId": "1",
+    "nom":"kit appareil",
+    "typeId":""
+}
+
+
+### DELETE GROUPE APPAREIL 
+DELETE http://localhost:4000/deletegroupe
+Content-Type: application/json
+
+{
+    "typeId": "1"
+}
+
+
+### DELETE ALL GROUPE APPAREIL 
+DELETE  http://localhost:4000/deleteallgroupe
+Content-Type: application/json
+
+
+### DELETE ALL KIT (Valeur kit, kit, user kit, groupe user) 
+DELETE  http://localhost:4000/deleteallkit
+Content-Type: application/json
+
+
+
+
+
+
+####################### APPAREIL  #################################################################################
+### GET ALL APPAREIL CONNECTED
+GET http://localhost:4000/getallkitconnected
+Content-Type: application/json
+
+
+### GET APPAREIL BY ID 
+POST http://localhost:4000/getappareilbyid
+Content-Type: application/json
+
+{
+    "idAppareil": "1"
+}
+
+
+
+### GET ALL PRIX KIT CONNECTED BY MONTH
+POST http://localhost:4000/getallprixkitconnected
+Content-Type: application/json
+
+{
+    "year": ""
+}
+
+
+
+### GET APPAREIL BY USER
+POST http://localhost:4000/getappareilbyuser
+Content-Type: application/json
+
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjozLCJlbWFpbCI6ImFuZHJpYW5pcmluYWtvbG9pbmF0c2lvcmludHNvYUBnbWFpbC5jb20iLCJpYXQiOjE3Mjc5NDE2MDYsImV4cCI6MTcyNzk0NTIwNn0.ZLDfvnZWYZCp1GyjG8nSVuHFjVr37xLz3vNsUECj8Ls",
+    "mois": ""
+}
+
+
+
+### GET VALEUR APPAREIL PRINCIPALE BY YEAR
+POST http://localhost:4000/getappareilbyyear
+Content-Type: application/json
+
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjozLCJlbWFpbCI6ImFuZHJpYW5pcmluYWtvbG9pbmF0c2lvcmludHNvYUBnbWFpbC5jb20iLCJpYXQiOjE3Mjc5NDE2MDYsImV4cCI6MTcyNzk0NTIwNn0.ZLDfvnZWYZCp1GyjG8nSVuHFjVr37xLz3vNsUECj8Ls",
+    "year": ""
+}
+
+
+
+
+
+### GET APPAREIL BY USER BY GROUPE
+POST http://localhost:4000/getappareiluserbygroupe
+Content-Type: application/json
+
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoyLCJlbWFpbCI6InRzaXJ5bGFuZHlyYXNhbWl6YWZ5QGdtYWlsLmNvbSIsImlhdCI6MTcyNzI0MzEzNywiZXhwIjoxNzI3MjQ2NzM3fQ.tWCNnfBZLOo49X6J7OG1pXiqoREcQ8LHubIBBlkE0z4",
+    "typeAppareilId":"2"
+}
+
+
+
+### CREATE APPAREIL USER
+PUT http://localhost:4000/createappareiluser
+Content-Type: application/json
+
+{
+    "appareilId": "2",
+    "compteElectriciteEauId":"1",
+    "typeAppareilId":"",
+    "pseudoGroupe": ""
+}
+
+
+### UPDATE STATUS APPAREIL
+POST http://localhost:4000/updatestatusappareil
+Content-Type: application/json
+
+{
+    "appareilId": "2",
+    "status":"on"
+}
+
+
+### UPDATE LIMITE APPAREIL
+POST http://localhost:4000/updatelimiteappareil
+Content-Type: application/json
+
+{
+    "appareilId": "3",
+    "limite":"30"
+}
+
+
+
+### UPDATE LIMITE OK APPAREIL
+POST http://localhost:4000/updatelimiteokappareil
+Content-Type: application/json
+
+{
+    "appareilId": "1",
+    "limiteok": true
+}
+
+
+
+
+### UPDATE APPAREIL USER
+POST http://localhost:4000/updateappareiluser
+Content-Type: application/json
+
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoyLCJlbWFpbCI6InRzaXJ5bGFuZHlyYXNhbWl6YWZ5QGdtYWlsLmNvbSIsImlhdCI6MTcyODA0Nzg0NiwiZXhwIjoxNzI4MDUxNDQ2fQ.iY2VeWA9EMXbQvFG3v97ktxAN2bP9APyKPTUg4c7Ims",
+    "appareilId": "1",
+    "nom":"Kit Landy"
+}
+
+
+
+### UPDATE GROUPE APPAREIL USER
+POST http://localhost:4000/updategroupeappareil
+Content-Type: application/json
+
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoyLCJlbWFpbCI6InRzaXJ5bGFuZHlyYXNhbWl6YWZ5QGdtYWlsLmNvbSIsImlhdCI6MTcyNzI0MzEzNywiZXhwIjoxNzI3MjQ2NzM3fQ.tWCNnfBZLOo49X6J7OG1pXiqoREcQ8LHubIBBlkE0z4",
+    "userAppareilId": "1",
+    "typeAppareilId":"1"
+}
+
+
+
+### DELETE
+DELETE http://localhost:4000/deleteappareil
+Content-Type: application/json
+
+{
+    "idAppareil": "1"
+}
+
+
+
+####################### VALEUR APPAREIL  #################################################################################
+### GET VALEURAPPAREIL BY ID
+POST http://localhost:4000/getvaleurappareil
+Content-Type: application/json
+
+{
+    "appareilId": "2",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoyLCJlbWFpbCI6InRzaXJ5bGFuZHlyYXNhbWl6YWZ5QGdtYWlsLmNvbSIsImlhdCI6MTcyNzk1OTUzNCwiZXhwIjoxNzI3OTYzMTM0fQ.IO_Qc9oXL8YVdM3PCbx8vI2cSErWsMhkDrW5yKImYu4"
+}
+
+
+
+### DELETE BY MY SERVEUR
+POST http://localhost:4000/deletevaleurappareilbyserveur
+Content-Type: application/json
+
+{
+    "appareilId": "1"
+}
+
+
+
+
+
+
+####################### SERVICE  #################################################################################
+# GET ALL SERVICE  
+GET http://localhost:4000/getallservice
+
+
+### GET SERVICE BY ID
+POST http://localhost:4000/getservicebyid
+Content-Type: application/json
+
+{
+    "serviceId": "1"
+}
+
+
+### CREATE SERVICE
+PUT http://localhost:4000/createservice
+Content-Type: application/json
+
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoxLCJlbWFpbCI6Im1pY2thZWxya3QyMEBnbWFpbC5jb20iLCJpYXQiOjE3MjM0NTMwNDcsImV4cCI6MTcyMzQ1NjY0N30.IEemfR7cyOmzEqsKG8dZlj6yD1j6qm7awmIpjaFqx08",
+    "type": "Changement de Tarif",
+    "typeService": "litige"
+}
+
+
+
+
+
+####################### LITIGE  #################################################################################
+# GET ALL LITIGE  
+GET http://localhost:4000/getalllitige
+
+
+### GET LITIGE BY ID
+POST http://localhost:4000/getlitigebyid
+Content-Type: application/json
+
+{
+    "litigeId": "1"
+}
+
+
+### CREATE LITIGE
+PUT http://localhost:4000/createlitige
+Content-Type: application/json
+
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoxNywiZW1haWwiOiJhbmRyaWFuaXJpbmFrb2xvaW5hdHNpb3JpbnRzb2FAZ21haWwuY29tIiwiaWF0IjoxNzI0MDU2MjU5LCJleHAiOjE3MjQwNTk4NTl9.kby7hVJl8SdpmG07aemqWhcZlwyEhHVDhyY1ymE2LiI",
+    "nomUser": "",
+    "prenom": "koloina",
+    "emailUser": "",
+    "phoneUser": "03450594434",
+    "adresseUser": "Lot E 199 AM Ivandry",
+    "message": "Mon 1er Litige",
+    "serviceId": "1"
+}
+
+
+
+
+
+
+
+
+
+####################### CHAT IA  #################################################################################
+### CREATE CHAT IA
+POST http://localhost:4000/chat
+Content-Type: application/json
+
+{
+    "message": "Comment ets la formule de la puissance d'un circuit ?"
+}
+
+
+
+
+
+
+####################### NOTIFICATION  #################################################################################
+### GET ALL NOTIFICATION 
+GET http://localhost:4000/getallnotif
+Content-Type: application/json
+
+
+
+### GET NOTIFICATION BY USER
+POST http://localhost:4000/getnotificationuser
+Content-Type: application/json
+
+{
+    "utilisateurId": "",
+    "zoneId": "1",
+    "agenceUser": "",
+    "commune": ""
+}
+
+
+### CREATE NOTIFICATION
+POST http://localhost:4000/createnotification
+Content-Type: application/json
+
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoxLCJlbWFpbCI6Im1pY2thZWxya3QyMEBnbWFpbC5jb20iLCJpYXQiOjE3MjQzMTcxNTEsImV4cCI6MTcyNDMyMDc1MX0.FxV4P4xjaXM7GoR57CUdR1Zxu9ZojpoabsGZswAo2nA",
+    "titre": "ndao ody  @zay",
+    "description": "notif desc 1",
+    "utilisateurId": "17",
+    "zoneId": "",
+    "agenceUser": "",
+    "commune": ""
+}
+
+
+
+
+
+
+
+
+####################### PAIEMENT  #################################################################################
+### PAYER FACTURE
+POST http://localhost:4000/payer
+Content-Type: application/json
+
+{
+    "idCalculElectriciteEau": "1"
+}
+
+
+
+
+
+
+
+
+
+####################### FOURNISSEUR #################################################################################
+# GET ALL FOURNISSEUR 
+GET http://localhost:4000/getallfournisseur
+
+
+### GET FOURNISSEUR BY ID
+POST http://localhost:4000/getfournisseurbyid
+Content-Type: application/json
+
+{
+    "idFournisseur": 1
+}
+
+
+### DELETE ALL FOURNISSEUR
+DELETE http://localhost:4000/deleteallfournisseur
+Content-Type: application/json
+
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoxLCJlbWFpbCI6Im1pY2thZWxya3QyMEBnbWFpbC5jb20iLCJpYXQiOjE3MjczMzE5NjUsImV4cCI6MTcyNzMzNTU2NX0.T5CnJzJKyBYAxa7bwkZJ5cY3RIHfi1Tq29uYCH2Wrow"
+}
+
+
+
+
+
+
+####################### PRODUIT #################################################################################
+# GET ALL PRODUIT 
+GET http://localhost:4000/getallmarketoffre
+
+
+### GET PRODUIT BY ID
+POST http://localhost:4000/getmarketoffrebyid
+Content-Type: application/json
+
+{
+   "idProduit": "1"
+}
+
+
+### GET PRODUIT BY FOURNISSEUR
+POST http://localhost:4000/getmarketoffrebymarketplace
+Content-Type: application/json
+
+{
+    "fournisseurId": "1"
+}
+
+
+
+
+
+
+
+####################### TYPE PRODUIT #################################################################################
+# GET ALL TYPE PRODUIT 
+GET http://localhost:4000/getalltypeproduit
+
+
+### GET TYPE PRODUIT BY ID
+POST http://localhost:4000/gettypeproduitbyid
+Content-Type: application/json
+
+{
+   "idTypeProduit": "1"
+}
+
+
+### CREATE TYPE PRODUIT
+PUT http://localhost:4000/createtypeproduit
+Content-Type: application/json
+
+{
+    "type": "eau"
+}
+
+
+
+
+
+
+
+
+
+
+####################### AVIS #################################################################################
+# GET ALL AVIS 
+GET http://localhost:4000/getallavis
+
+
+### GET AVIS BY EXPERT
+POST http://localhost:4000/getavisbyexpert
+Content-Type: application/json
+
+{
+    "expertId": "13"
+}
+
+### GET AVIS BY EXPERT AND USER
+POST http://localhost:4000/getavisbyutilisateurandexpert
+Content-Type: application/json
+
+{
+    "expertId": "18",
+    "token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjozLCJlbWFpbCI6ImZhbm9AZ21haWwuY29tIiwiaWF0IjoxNzIwNjg2NzMxLCJleHAiOjE3MjA2OTAzMzF9.t9thxlRRC8iBY5vDLCFA2UVUu7HFIy0mborWUEk8vm8"
+}
+
+### CREATE AVIS
+PUT http://localhost:4000/createavis
+Content-Type: application/json
+
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoyLCJlbWFpbCI6InRzaXJ5bGFuZHlyYXNhbWl6YWZ5QGdtYWlsLmNvbSIsImlhdCI6MTcyNzI2MzUxNywiZXhwIjoxNzI3MjY3MTE3fQ.tlniw10KpzYTEzZRl2D0Sm1kEnU1pAVF4g2v4I5G4XY",
+    "expertId":"1",
+    "avis": "it's the best"
+}
+
+
+### UPDATE AVIS
+POST http://localhost:4000/updateavis
+Content-Type: application/json
+
+{
+    "idAvis": "1",
+    "token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjozLCJlbWFpbCI6ImZhbm9AZ21haWwuY29tIiwiaWF0IjoxNzIwNjg2NzMxLCJleHAiOjE3MjA2OTAzMzF9.t9thxlRRC8iBY5vDLCFA2UVUu7HFIy0mborWUEk8vm8",
+    "expertId":"2",
+    "avis": "J'aime bien son façon de travaille"
+}
+
+
+
+
+
+####################### EXPERT #################################################################################
+### GET ALL EXPERT 
+GET http://localhost:4000/getallexpert
+
+
+### GET EXPERT BY ID
+POST http://localhost:4000/getexpertbyid
+Content-Type: application/json
+
+{
+    "idExpert": 13
+}
+
+### GET EXPERT BY ZONE
+POST http://localhost:4000/getexpertbyzone
+Content-Type: application/json
+
+{
+    "zoneId": 1
+}
+
+
+
+
+####################### EXPERT TYPE #################################################################################
+# GET ALL EXPERT TYPE 
+GET https://ecozipo-codesource.onrender.com/getallexpertype
+
+
+### CREATE TYPE EXPERT
+PUT https://ecozipo-codesource.onrender.com/createexperttype
+Content-Type: application/json
+
+{
+    "type": "plombier"
+}
+
+# "token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoxLCJlbWFpbCI6Im1pY2thZWxya3QyMEBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCR5VzBvNVRYSUVacVFRaERSR2hHQ3IuZjdiU09iMDY1R1NBWC9QTm1zYjJOS0lKc1ZUaUNuLiIsImlhdCI6MTcxNTQ5MzQ0MCwiZXhwIjoxNzE1NDk3MDQwfQ.t1wo53VqqiZ2Zb4RN7IKjOHeyJB9yYyjhpREOqrQkdI",
+
+
+
+
+####################### ZONE #################################################################################
+# GET ALL ZONE
+GET http://localhost:4000/getallzone
+
+
+### GET ZONE BY PROVINCE
+POST http://localhost:4000/getzonebyprovince
+Content-Type: application/json
+
+{
+    "provinceId": 1
+}
+
+
+### CREATE ZONE
+PUT http://localhost:4000/createzone
+Content-Type: application/json
+
+{
+    "nom": "imerikasinina",
+    "provinceId": 1
+}
+
+
+
+
+####################### PROVINCE #################################################################################
+# GET ALL PROVINCE
+GET http://localhost:4000/getallprovince
+
+
+### CREATE PROVINCE
+PUT http://localhost:4000/createprovince
+Content-Type: application/json
+
+{
+    "nom": "taolagnaro"
+}
+
+
+
+
+####################### STATUS #################################################################################
+# GET STATUS
+GET http://localhost:4000/getstatus
+
+
+### CREATE STATUS
+PUT http://localhost:4000/createstatus
+Content-Type: application/json
+
+{
+    "nom": "supprimer"
+}
+
+
+
+
+####################### HISTORIQUE #################################################################################
+# GET HISTORIQUE
+GET http://localhost:4000/getallhisto
+
+
+
+
+
+
+####################### JIRAMA SUITE #################################################################################
+
+
+###################### GET ALL COMPTE ELECTRICITE ##############################
+
+
+
+
+
+
+####################### CALCUL ELECTRICITE EAU ENREGISTRER ##############################
+### GET ALL CALCUL
+GET http://localhost:4000/getallcalcul
+Content-Type: application/json
+
+
+### GET CALCUL BY COMPTE ELECTRCITE EAU
+POST http://localhost:4000/getcalculbycompteelectricite
+Content-Type: application/json
+
+{
+    "idCompte": 3
+}
+
+
+### DELETE ALL CALCUL
+DELETE https://ecozipo-codesource.onrender.com/deleteallcalcul
+Content-Type: application/json
+
+
+
+
+####################### CALCUL ELECTRICITE EAU ##############################
+### CALCUL ELECTRICITE BY USER CHOIX
+POST http://localhost:4000/calculElectriciteuserchoix
+Content-Type: application/json
+
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoyLCJlbWFpbCI6InRzaXJ5bGFuZHlyYXNhbWl6YWZ5QGdtYWlsLmNvbSIsImlhdCI6MTcyNzM1NDIwMywiZXhwIjoxNzI3MzU3ODAzfQ.HD7Zy9X1GUKQCpMMcORlgjoEx-Ka7Y7500tzsmcE0xg",
+    "idCompte": 3,
+    "nouvel": "200",
+    "ancien": "100",
+    "nouvelEau": "6045",
+    "ancienEau": "5829",
+    "choix": "electricite"
+}
+
+ 
+# koloina : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjozLCJlbWFpbCI6ImFuZHJpYW5pcmluYWtvbG9pbmF0c2lvcmludHNvYUBnbWFpbC5jb20iLCJpYXQiOjE3Mjc0MjAyNDksImV4cCI6MTcyNzQyMzg0OX0.AVgkOiqm9ZtXYpv5Qw5p-f6FRNwHECWFLI49vuu5T9E
+# landy : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoxMCwiZW1haWwiOiJhbmRyaWFuaXJpbmFrb2xvaW5hdHNpb3JpbnRzb2FAZ21haWwuY29tIiwiaWF0IjoxNzI2NzE3OTQyLCJleHAiOjE3MjY3MjE1NDJ9.Vw4C78l7HsvPbsfJf9Nh60UfkWfXr5-J4WYBvwev9ec
+
+### CALCUL ELECTRICITE BY USER
+POST http://localhost:4000/calculElectriciteuser
+Content-Type: application/json
+
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjozLCJlbWFpbCI6ImFuZHJpYW5pcmluYWtvbG9pbmF0c2lvcmludHNvYUBnbWFpbC5jb20iLCJpYXQiOjE3Mjc0MjAyNDksImV4cCI6MTcyNzQyMzg0OX0.AVgkOiqm9ZtXYpv5Qw5p-f6FRNwHECWFLI49vuu5T9E",
+    "idCompte": 2,
+    "nouvel": "1500",
+    "ancien": "83",
+    "nouvelEau": "6145",
+    "ancienEau": "5829"
+}
+
+
+# 13212351111 / 410010 / Mandritsara / tarif(20) / pw(3.3)
+# 23017301111 / 101001 / ambatonakanga / tarif(20) / pw(2.2)
+# 25236150761 / 101002 / mandroseza / tarif(19) / 3.3
+
+### CODE CALCUL ELECTRICITE NORMAL
+POST http://localhost:4000/calculelectricite
+Content-Type: application/json
+
+{
+    "tourneId": "23017300185",
+    "communeId": "101001",
+    "tarif":"20",
+    "puissance": 2.2,
+    "nouvel": "3000",
+    "ancien": "2800",
+    "type": "partiel"
+}
+
+
+### CODE CALCUL EAU NORMAL
+POST http://localhost:4000/calculeau
+Content-Type: application/json
+
+{
+    "tourneId": "23017300185",
+    "communeId": "101001",
+    "tarifEau":"50",
+    "calibrage": 15,
+    "nouvel": 6045,
+    "ancien": 5829,
+    "type": "partiel"
+}
+
+
+### CODE CALCUL ELECTRICITE EAU NORMAL
+POST http://localhost:4000/calculelectriciteeau
+Content-Type: application/json
+
+{
+    "tourneId": "25453170582",
+    "communeId": "101005",
+    "tarif":"20",
+    "puissance": 2.2,
+    "nouvel": 43264,
+    "ancien": 42888,
+    "type": "partiel",
+    "tarifEau": "50",
+    "calibrage": 15,
+    "nouvelEau": 6045,
+    "ancienEau": 5829
+}
+
+
+
+
+####################### CODE TARIF ##############################
+# GET CODE TARIF
+GET http://localhost:4000/getallcodetarif
+
+
+### GET CODE TARIF BY TARIF   
+POST http://localhost:4000/getcodetarifbyid
+Content-Type: application/json
+
+{
+    "idTarif": "3"
+}
+
+
+### GET CODE TARIF BY TARIF   
+POST http://localhost:4000/getcodetarifbytarif
+Content-Type: application/json
+
+{
+    "tarif": "24"
+}
+
+
+####################### CODE TAXE ##############################
+# GET CODE TAXE
+GET http://localhost:4000/getalltaxe
+
+
+### GET CODE TAXE BY TARIF, COMMUNE, ACTIVITE   
+POST http://localhost:4000/gettaxebytarifcommuneactivite
+Content-Type: application/json
+
+{
+    "site": "257",
+    "activite":"e",
+    "communeId": "102079"
+}
+
+
+####################### CODE FNE ##############################
+# GET CODE FNE
+GET http://localhost:4000/getallfne
+
+
+### GET CODE FNE BY TARIF   
+POST http://localhost:4000/getfnebytarif
+Content-Type: application/json
+
+{
+    "tarif": "20"
+}
+
+
+
+####################### CODE PRIX ##############################
+# GET PRIX
+GET http://localhost:4000/getallprix
+
+
+### GET CODE FNE BY TARIF   
+POST http://localhost:4000/getcodeprixbyzoneandtarif
+Content-Type: application/json
+
+{
+    "zoneId": "1",
+    "tarif": "20"
+}
+
+
+
+
+####################### CODE AGENCE ##############################
+# GET CODE AGENCE
+GET https://ecozipo.vercel.app/getallagence
+
+
+### GET CODE AGENCE BY TOURNE   
+POST http://localhost:4000/getagencebytourne
+Content-Type: application/json
+
+{
+    "tourneId": "25453170581"
+}
+
+### GET CODE AGENCE BY ID COMMUNE   
+POST http://localhost:4000/getagencebycommune
+Content-Type: application/json
+
+{
+    "communeId": "101005"
+}
+
+
+### GET CODE AGENCE BY ID TOURNE AND COMMUNE
+POST http://localhost:4000/getagencebytourneandcommune
+Content-Type: application/json
+
+{
+    "tourneId": "254",
+    "communeId": "102079"
+}
+
+
+### CREATE CODE AGENCE
+PUT http://localhost:4000/createcodeagence
+Content-Type: application/json
+
+{
+    "nom": "supprimer"
+}
+
+
+####################### CODE TOURNE ##############################
+# GET CODE TOURNE
+GET http://localhost:4000/getallcodetourne
+
+
+### GET CODE TOURNE BY ID   
+POST http://localhost:4000/getcodetournebyid
+Content-Type: application/json
+
+{
+    "idCodeTourne": "1"
+}
+
+
+### GET CODE TOURNE BY TOURNE   
+POST http://localhost:4000/getcodetournebytourne
+Content-Type: application/json
+
+{
+    "tourne": "2314417"
+}
+
+
+### CREATE CODE TOURNE
+PUT http://localhost:4000/createcodetourne
+Content-Type: application/json
+
+{
+    "nom": "supprimer"
+}
+
+
+####################### CODE ZONE TARIF ##############################
+# GET CODE ZONE TARIF
+GET http://localhost:4000/getallcodezonetarif
+
+
+### GET CODE ZONE TARIF BY SITE, ACTIVITE, COMMUNE
+POST http://localhost:4000/getcodezonetarifbysiteandactiviteandcommune
+Content-Type: application/json
+
+{
+    "site": "254",
+    "activite": "E",
+    "commune": "101005"
+}
+
+
+
+
+####################### DELETE ALL JIRAMA ##############################
+
+# DELETE AGENCE
+DELETE http://localhost:4000/deleteallagence
+
+
+
+
+####################### APPAREIL #########################################################################
+### GET ALL APPAREIL 
+GET http://192.168.1.110:4000/getAllAppareil
+Content-Type: application/json
+
+### ADD APPAREIL
+POST http://localhost:4000/addAppareil
+Content-Type: application/json
+
+{
+    "nom": "Tablette"
+}
+
+
+####################### TypeHome #########################################################################
+### GET ALL TypeHome 
+GET http://192.168.1.175:4000/getAllTypeHome
+Content-Type: application/json
+
+### ADD TypeHome
+POST http://192.168.1.175:4000/addTypeHome
+Content-Type: application/json
+
+{
+    "nom": "Appartement"
+}
+
+
+
+####################### Simulation #########################################################################
+
+### GET Simulation
+POST http://localhost:4000/getsimulation
+Content-Type: application/json
+
+{
+    "utilisateurId": 1
+}
+
+
+####################### Message #########################################################################
+
+### GET Message
+POST http://localhost:4000/getMessages
+Content-Type: application/json
+
+{
+    "utilisateurId": 1
+}
+
+### ADD Message
+POST http://localhost:4000/addMessage
+Content-Type: application/json
+
+{
+    "senderId": 1,
+    "receiverId":0,
+    "message": "Message pour l'IA test"
+}
+

@@ -1,0 +1,305 @@
+# https://ecozipo-codesource.onrender.com
+# http://localhost:4000
+
+
+# tsirylandyrasamizafy@gmail.com
+# andrianirinakoloinatsiorintsoa@gmail.com
+# rianalarabe13@gmail.com
+# rantsajonathan@gmail.com
+# mickaelrkt20@gmail.com    
+# ecozipo@gmail.com | xanHod-7zedci-xehmod
+### LOGIN
+POST http://localhost:4000/login
+Content-Type: application/json
+
+{
+    "email": "ecozipo@gmail.com",
+    "password": "xanHod-7zedci-xehmod"
+}
+
+    
+
+
+
+
+###################### COMPTE ELECTRICITE EAU #######################################################
+#GET ALL COMPTE ELECTRICITE
+GET https://ecozipo-codesource.onrender.com/getallcompteelectricite
+
+
+### GET COMPTE ELECTRICITE BY USER
+POST http://localhost:4000/getcompteelectricitebyuser
+Content-Type: application/json
+
+{
+    "token" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjo2LCJlbWFpbCI6ImVjb3ppcG9AZ21haWwuY29tIiwiaWF0IjoxNzMyODY4NjY3LCJleHAiOjE3MzI4NzIyNjd9.QG2lpgZ8GItlH6PK36eVREO0Rv_9z6mXO0Q1-Zuuc7o"
+}
+
+
+### GET COMPTE ELECTRICITE BY USER
+POST http://localhost:4000/getcompteelectricitebyuserandkit
+Content-Type: application/json
+
+{
+    "token" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjo2LCJlbWFpbCI6ImVjb3ppcG9AZ21haWwuY29tIiwiaWF0IjoxNzMyODY4NjY3LCJleHAiOjE3MzI4NzIyNjd9.QG2lpgZ8GItlH6PK36eVREO0Rv_9z6mXO0Q1-Zuuc7o"
+}
+
+
+
+### GET COMPTE ELECTRICITE BY ID
+POST http://localhost:4000/getcompteelectricitebyid
+Content-Type: application/json
+
+{
+    "token" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjo0LCJlbWFpbCI6InNhcmFoQGdtYWlsLmNvbSIsImlhdCI6MTcyMTczNTM3MCwiZXhwIjoxNzIxNzM4OTcwfQ.TImus5syjD_yWD8tZ3aPlANueyktozB_IzdUZyJqC48",
+    "idCompte": 8
+}
+
+
+### UPDATE COMPTE ELECTRICITE BY USER
+POST http://localhost:4000/updatecompteelectriciteeau
+Content-Type: application/json
+
+{
+    "token" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjo3LCJlbWFpbCI6ImNvbnRhY3RAZWNvemlwby5jb20iLCJpYXQiOjE3MzIxNzc4ODgsImV4cCI6MTczMjE4MTQ4OH0.PCzZKY1s2RGEltl7NQJVmnGcaAa8Zi-stoinHBgpNCc",
+    "pseudoCompte": "Maison",
+    "id": "5"  
+}
+
+### DELETE COMPTE ELECTRICITE BY USER
+DELETE https://ecozipo-codesource.onrender.com/deletecompteelectriciteeau
+Content-Type: application/json
+
+{
+    "token" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjozLCJlbWFpbCI6ImFuZHJpYW5pcmluYWtvbG9pbmF0c2lvcmludHNvYUBnbWFpbC5jb20iLCJpYXQiOjE3MzI4NjQzMDYsImV4cCI6MTczMjg2NzkwNn0.1iB8qK1Cg_AYdfN8xvkHl85k8p4yyjYW86gzlSHG-BQ",
+    "id": "2"  
+}
+
+
+####################### CREATE COMPTE ELECTRICITE EAU ##############################
+# 13212351111 / 410010 / Mandritsara / tarif(20) / pw(3.3)
+# CREER COMPTE ELECTRICITE EAU
+POST https://ecozipo-codesource.onrender.com/createcompteelectriciteeau
+Content-Type: application/json
+
+{
+    "token" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjo2LCJlbWFpbCI6ImVjb3ppcG9AZ21haWwuY29tIiwiaWF0IjoxNzQwMTIwMzU1LCJleHAiOjE3NDAxMjM5NTV9.vxjSWQBGqLaR8qHpasw82udxKM1GtqkUSVHueuqnkBw",
+    "pseudoCompte": "Bureau Ankadindramamy",
+    "titulaire": "RAHARINAIVO Vahiny",
+    "referenceClient": "25453170581",
+    "communeClient": "101005",
+    
+    "tarif":"20",
+    "puissance": 3.3,
+    "compteurElectricite":"231DZ64707E",
+
+    "compteurEau" : "",
+    "tarifEau" : "",
+    "calibrage" : "",
+
+    "categorie": "partiel",
+    "type": "electricite",
+    "mois1": "516",
+    "mois2": "361",    
+    "mois3": "437"
+}
+
+
+
+
+### CALCUL ELECTRICITE BY USER CHOIX
+POST http://localhost:4000/calculElectriciteuserchoix
+Content-Type: application/json
+
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjo2LCJlbWFpbCI6ImVjb3ppcG9AZ21haWwuY29tIiwiaWF0IjoxNzM3MzUyMDE4LCJleHAiOjE3MzczNTU2MTh9.mW82BBxjj18Ued5-jhoMDCwUvgXO08IYQtWU0-D8PT4",
+    "idCompte": 17,
+    "nouvel": "7.71",
+    "ancien": "0",
+    "nouvelEau": "",
+    "ancienEau": "",
+    "choix": "electricite"
+}
+
+
+
+
+
+
+
+
+
+
+###################### ECONOMISER ############################################################################ 
+### ECONOMISER
+POST http://localhost:4000/economiser
+Content-Type: application/json
+
+{
+    "compteElectriciteEauId": "3",
+    "KwhConsomme": "240",
+    "jourConsommation":"29",
+    "nbrAdulte":"1",
+    "nbrEnfant":"1"
+}
+
+
+
+
+
+###################### CALCUL KWH EN ARIARY ############################################################################ 
+### CALCULE KWH EN ARIARY
+POST http://localhost:4000/calculkwhenariary
+Content-Type: application/json
+
+{
+    "compteElectriciteEauId": "17",
+    "Kwh": "401.89"
+}
+
+
+
+
+###################### LIER COMPTE BY USER ############################################################################ 
+### link account
+POST https://ecozipo-codesource.onrender.com/linkaccount
+Content-Type: application/json
+
+{
+    "utilisateurId": 6,
+    "referenceClient": "25756660445"
+}
+
+
+### get all user need validation to connected by compte
+POST https://ecozipo-codesource.onrender.com/getalluserneedvalidationtoconnectedbycompteuser
+Content-Type: application/json
+
+{
+    "utilisateurId": 6
+}
+
+
+
+### valid demande user compte
+POST https://ecozipo-codesource.onrender.com/validdemandeusercompte
+Content-Type: application/json
+
+{
+    "utilisateurId": 6,
+    "compteElectriciteEauId": 1
+}
+
+
+### delete user use my compte
+DELETE  http://localhost:4000/deleteuserusemycompte
+Content-Type: application/json
+
+{
+    "utilisateurId": 3,
+    "compteElectriciteEauId": 3
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+###################### IMPORTER FICHIER EXCEL ############################################################################ 
+### EXPORTER COMPTE ELECTRICITE EAU CIBLE
+POST http://localhost:4000/exportercompteelectriciteeaucible
+Content-Type: application/json
+
+{
+    "feuille": "1"
+}
+
+
+
+
+
+
+
+
+####################### UPDATE DATE RELEVE, FACTURE COMPTE ############################################################################ 
+### UPDATE FACTURE COMPTE
+POST http://localhost:4000/updatefacturemoiscompte
+Content-Type: application/json
+
+{
+    "mois1": "200",
+    "mois2": "300",
+    "mois3": "100",
+    "compteElectriciteEauId":"8"
+}
+
+
+
+
+
+### UPDATE DATE RELEVE
+POST http://localhost:4000/updatedaterelevecompte
+Content-Type: application/json
+
+{
+    "date":"31/01/2025",
+    "joursConsommation":"30",
+    "compteElectriciteEauId":"17",
+    "consommationInitial": "2750" 
+}
+
+
+
+
+
+### UPDATE DATE RELEVE, FACTURE COMPTE
+POST https://ecozipo-codesource.onrender.com/getaddaterelevefacturemois
+Content-Type: application/json
+
+{
+    "mois1": "516",
+    "mois2": "361",
+    "mois3": "437",
+    "date":"31/01/2025",
+    "compteElectriciteEauId":"29",
+    "joursConsommation":"30",
+    "consommationInitial": "1250" 
+}
+
+
+### UPDATE MODE GESTION COMPTE KIT
+POST http://localhost:4000/updatemodegestionkit
+Content-Type: application/json
+
+{
+    "modeGestionId": "1",
+    "device_id": "bfa6b3c635b2c0dd14q8hs"
+}
+
+
+### UPDATE MODE GESTION COMPTE KIT
+POST  https://ecozipo-codesource.onrender.com/updateconsommationmininkitvaleurbut
+Content-Type: application/json
+
+{
+    "consommationMin": "170",
+    "device_id": "bfa3dc80b4e3d59749zxqg"
+}
+
+
+
+### DESACTIVER KWH PERSONNALISER KIT VALEUR
+POST https://ecozipo-codesource.onrender.com/desactiverkwhkitvaleurbut
+Content-Type: application/json
+
+{
+    "device_id": "bff96527f75046059crdcz"
+}

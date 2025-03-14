@@ -1,0 +1,21 @@
+# https://ecozipo-codesource.onrender.com
+# http://localhost:4000
+
+# bfa3dc80b4e3d59749zxqg : Bureau
+# bff96527f75046059crdcz : maison ancien
+
+# bfbfdd93245b026a5arp3h 24 @ netsika (68)
+
+
+
+####################### Simulation kit ############################################################################ 
+POST http://localhost:4000/makesimulationkit
+Content-Type: application/json
+
+{
+    "data": ""
+}
+
+
+
+

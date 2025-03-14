@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "KitTongou" ALTER COLUMN "image" DROP DEFAULT,
+ALTER COLUMN "url" DROP DEFAULT;

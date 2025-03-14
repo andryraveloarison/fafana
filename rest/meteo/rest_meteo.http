@@ -1,0 +1,88 @@
+# https://ecozipo-codesource.onrender.com
+# http://localhost:4000
+
+# bfa3dc80b4e3d59749zxqg : Bureau
+# bff96527f75046059crdcz : maison
+
+# tsirylandyrasamizafy@gmail.com
+# andrianirinakoloinatsiorintsoa@gmail.com
+# rianalarabe13@gmail.com
+# rantsajonathan@gmail.com
+# mickaelrkt20@gmail.com    
+### LOGIN
+POST http://localhost:4000/login
+Content-Type: application/json
+
+{
+    "email": "contact@ecozipo.com",
+    "password": "Ecozipo@2024"
+}
+
+
+
+
+
+
+
+
+###################### METEO #######################################################
+### GET METEO
+POST https://ecozipo-codesource.onrender.com/getmeteo
+Content-Type: application/json
+
+{
+    "city" : "Antananarivo",
+}
+
+
+### GET LOCATION BY ID
+POST https://ecozipo-codesource.onrender.com/getlocation
+Content-Type: application/json
+
+{
+    "ip" : ""
+}
+
+
+
+### GET LOCATION BY CITY
+POST http://localhost:4000/getlocationbycity
+Content-Type: application/json
+
+{
+    "ip" : "",
+    "city" : "Itaosy"
+}
+
+
+
+### GET WEATHER BY LONGITUDE & LATITUDE
+POST http://localhost:4000/getweatherbylonglat
+Content-Type: application/json
+
+{
+    "lat": "-18.8924204",
+    "lon": "47.5603194"
+}
+
+
+
+
+### ADD WEATHER KIT
+POST https://ecozipo-codesource.onrender.com/addweatherkit
+Content-Type: application/json
+
+{
+    "ip" : "",
+    "city" : "Itaosy",
+    "device_id": "bf0472e30a7dd94d38qxjy"
+}
+
+
+### GET UPDATE WEATHER KIT
+POST https://ecozipo-codesource.onrender.com/getupdateweatherkit
+Content-Type: application/json
+
+{
+    "device_id": "bfa3dc80b4e3d59749zxqg"
+}

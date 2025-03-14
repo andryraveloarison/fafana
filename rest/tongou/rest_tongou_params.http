@@ -1,0 +1,100 @@
+# https://ecozipo-codesource.onrender.com
+# http://localhost:4000
+
+# bfa3dc80b4e3d59749zxqg : Bureau
+# bff96527f75046059crdcz : maison
+
+
+
+
+
+
+
+
+
+########################################## VALEUR BUT ############################################################################
+### get valeurbut KitValeurBut
+POST https://ecozipo-codesource.onrender.com/getkitvaleurbyidkittongou
+Content-Type: application/json
+
+{
+    "idKitTongou": "bfa3dc80b4e3d59749zxqg"
+}
+
+
+### Update KitValeurBut
+POST https://ecozipo-codesource.onrender.com/updatekitvaleurbut
+Content-Type: application/json
+
+{
+    "idKitTongou": "bfa3dc80b4e3d59749zxqg"
+}
+
+
+
+################################### NOTIFICATION ############################ 
+
+####
+GET https://ecozipo-codesource.onrender.com/getallnotif
+
+
+### GET NOTIFICATION BY FILTRE
+POST https://ecozipo-codesource.onrender.com/getnotificationuserfiltre
+Content-Type: application/json
+
+{
+    "utilisateurId": "6",
+    "type":"alerte"
+}
+
+
+### DELETE ALL NOTIFICATION 
+DELETE https://ecozipo-codesource.onrender.com/deleteallnotification
+
+
+
+################################### MODE GESTION ############################
+### get all mode gestion
+GET https://ecozipo-codesource.onrender.com/getallmodegestion
+
+
+### get mode gestion by id
+POST http://localhost:4000/getmodegestionbyid
+Content-Type: application/json
+
+{
+    "idModeGestion": "1"
+}
+
+
+### create mode gestion
+POST https://ecozipo-codesource.onrender.com/createmodegestion
+Content-Type: application/json
+
+{
+    "mode": "performance",
+    "pourcent": "25"
+}
+
+
+
+### update mode gestion null
+POST  https://ecozipo-codesource.onrender.com/updatemodegestionnull
+
+
+
+
+
+
+
+
+################################### IA ############################
+### ANALYSE IA IN CONSOMMATION KIT IN 7 LAST DAYS
+POST http://localhost:4000/analysekwh7lastdays
+Content-Type: application/json
+
+{
+    "device_id": "bfa3dc80b4e3d59749zxqg",
+    "compteElectriciteEauId":"8"
+}
+

@@ -1,0 +1,227 @@
+## https://ecozipo-codesource.onrender.com
+# http://localhost:4000
+
+# bfa3dc80b4e3d59749zxqg : Bureau
+# bff96527f75046059crdcz : maison
+# bf97a670a088fa909f5ybe : nouveau compte principale maison youssouf (id 4)
+# bfa8cbeabe840627eay2sh : secteur 02 maison youssouf (id 9)
+# bfa6b3c635b2c0dd14q8hs : secteur 02 maison youssouf (id 11)
+
+
+
+####################### USER ############################################################################
+### CREATE COMPTE
+PUT http://localhost:4000/register
+Content-Type: application/json
+
+{
+    "email": "sitecozipo@outlook.fr",
+    "password": "Ecozipo0@",
+    "typeUserId": 1
+}
+
+### Validation de l'utilisateur
+POST https://ecozipo-codesource.onrender.com/valide
+Content-Type: application/json
+
+{
+  "email": "ecozipofarafangana@gmail.com",
+  "validationCode": "119530"
+}
+
+# tsirylandyrasamizafy@gmail.com
+# andrianirinakoloinatsiorintsoa@gmail.com
+# rianalarabe13@gmail.com
+# rantsajonathan@gmail.com
+# mickaelrkt20@gmail.com   *
+# ecozipo@gmail.com  | xanHod-7zedci-xehmod
+
+### GET USER BY ID
+POST http://localhost:4000/getuserbyid
+Content-Type: application/json
+
+{
+    "id": "1"
+}
+
+
+### GET TOKEN BY ID
+POST http://localhost:4000/gettokenbyid
+Content-Type: application/json
+
+{
+    "id": "1"
+}
+
+
+### LOGIN
+POST https://ecozipo-codesource.onrender.com/login
+Content-Type: application/json
+
+{
+    "email": "ecozipo@gmail.com",
+    "password": "xanHod-7zedci-xehmod"
+}
+
+
+### DECODE PASSWORD
+POST http://localhost:4000/decodepassworduser
+Content-Type: application/json
+
+{
+    "email": "ecozipo@gmail.com"
+}
+
+
+
+
+### update user
+POST http://localhost:4000/updateuser
+Content-Type: application/json
+
+{
+    "nom" : "Eco",
+    "pseudo": "Ecozipo",
+    "adresse" : "aaaa",
+    "phone" : "0000",
+    "token" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjo2LCJlbWFpbCI6ImVjb3ppcG9AZ21haWwuY29tIiwiaWF0IjoxNzMzMjIzOTIxLCJleHAiOjE3MzMyMjc1MjF9._Vre0vAUcsZ6jkWly85LI1vT1pY_nQRqzjVFfH24WSg"
+}
+
+### VERIFY TOKEN
+POST http://localhost:4000/verifytoken
+Content-Type: application/json
+
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoxLCJlbWFpbCI6Im1pY2thZWxAZ21haWwuY29tIiwiaWF0IjoxNzIxODAxMzY5LCJleHAiOjE3MjE4MDQ5Njl9.KMueBqrA7QJ6gGQjOMD9Lh3vylY0Usugux6bZ7PxqNw"
+}
+
+### VERIFY USER INFO
+POST http://localhost:4000/verifyuserinfo
+Content-Type: application/json
+
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoyLCJlbWFpbCI6InRzaXJ5bGFuZHlyYXNhbWl6YWZ5QGdtYWlsLmNvbSIsImlhdCI6MTcyNzA4OTE1MywiZXhwIjoxNzI3MDkyNzUzfQ.hIcvzRY3VIRuoQmRzFLH1JV4Nky5NLRQ9nFJ-7bTL8c"
+}
+### GET USER BY TOKEN
+POST http://localhost:4000/getuserbytoken
+Content-Type: application/json
+
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoxLCJlbWFpbCI6Im1pY2thZWxya3QyMEBnbWFpbC5jb20iLCJpYXQiOjE3MjQ0MDQ4NjksImV4cCI6MTcyNDQwODQ2OX0.m8qJGNOfRaqRrQljQXXqKZQBX5WdUYrkxuRSk2jsY5A"
+}
+
+
+### SEND MAIL (CODE VALIDATION) FORGOT PASSWORD
+POST http://localhost:4000/sendmailforgotpassword
+Content-Type: application/json
+
+{
+  "email": "mickaelrkt20@gmail.com"
+}
+
+
+### RESET PASSWORD
+POST http://localhost:4000/resetpassword
+Content-Type: application/json
+
+{
+  "email": "mickaelrkt20@gmail.com",
+  "validationCode":"459653",
+  "password": "Mickael0@",
+  "confirmPassword": "Mickael0@"
+}
+
+
+### UPDATE URL BLOG  
+POST http://localhost:4000/updateurluser
+
+{
+  "apiUrl": "http://192.168.137.1:4000"
+}
+
+
+### SEND MAIL TEST
+POST http://localhost:4000/sendmailtest
+Content-Type: application/json
+
+{
+  "email": "mickaelrkt20@gmail.com",
+  "validationCode": "9583"
+}
+
+
+
+
+
+### GET ALL USER
+GET https://ecozipo-codesource.onrender.com/getalluser
+
+
+
+
+### UPDATE NTOFICATION USER
+POST http://localhost:4000/updatenotificationuser
+Content-Type: application/json
+
+{
+  "utilisateurId": "3",
+  "statusNotif": false
+}
+
+
+
+### GET ALL IMAGE DEFAULT ADMIN
+GET http://localhost:4000/getprofiledefaultadmin
+
+
+
+
+### GET ALL IMAGE DEFAULT USER
+GET https://ecozipo-codesource.onrender.com/getprofiledefaultuser
+
+
+
+### UPDATE USER IMAGE DEFAUTL
+POST https://ecozipo-codesource.onrender.com/updateuserimagedefault
+Content-Type: application/json
+
+{
+  "utilisateurId": "7",
+  "image": "profile8.jpg",
+  "url":"/profileUser/profile8.jpg"
+}
+
+
+
+### UPDATE USER TYPE OF USER
+POST https://ecozipo-codesource.onrender.com/updateusertypeofuser
+Content-Type: application/json
+
+{
+  "utilisateurId": "3",
+  "typeUserId": "1"
+}
+
+
+
+
+
+####################### USER TYPE #################################################################################
+# GET USER TYPE 
+GET https://ecozipo-codesource.onrender.com/getallusertype
+
+
+### CREATE USER TYPE
+PUT http://localhost:4000/createtypeuser
+Content-Type: application/json
+
+{
+    "type": "admin"
+}
+
+
+
+### UPDATE USER TYPE OF USER
+POST http://localhost:4000/updatetypeuseralluser
+
+

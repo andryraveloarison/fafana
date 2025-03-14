@@ -1,0 +1,46 @@
+# https://ecozipo-codesource.onrender.com
+# http://localhost:4000
+
+
+# tsirylandyrasamizafy@gmail.com
+# andrianirinakoloinatsiorintsoa@gmail.com
+# rianalarabe13@gmail.com
+# rantsajonathan@gmail.com
+# mickaelrkt20@gmail.com    
+### LOGIN
+
+
+    
+
+
+
+####################### NOTIFICATION #################################################################################
+# GET ALL NOTIFICATION USER
+POST http://localhost:4000/getnotificationuser
+Content-Type: application/json
+
+{
+    "utilisateurId": "6"
+}
+
+
+
+
+### GET ALL NOTIFICATION FILTRER BY USER
+POST http://localhost:4000/getnotificationuserfiltre
+Content-Type: application/json
+
+{
+    "utilisateurId": "6",
+    "type": "ia"
+}
+
+
+
+
+
+
+
+
+
+

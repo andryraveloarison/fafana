@@ -1,0 +1,91 @@
+# https://ecozipo-codesource.onrender.com
+# http://localhost:4000
+
+
+# tsirylandyrasamizafy@gmail.com
+# andrianirinakoloinatsiorintsoa@gmail.com
+# rianalarabe13@gmail.com
+# rantsajonathan@gmail.com
+# mickaelrkt20@gmail.com    
+### LOGIN
+POST http://localhost:4000/login
+Content-Type: application/json
+
+{
+    "email": "ecozipo@gmail.com",
+    "password": "xanHod-7zedci-xehmod"
+}
+
+    
+
+
+
+####################### ANALYSE IA #################################################################################
+# GET ALL ANALYSE IA BY USER
+POST http://localhost:4000/getallanalyseiabyuser
+Content-Type: application/json
+
+{
+    "utilisateurId": "6"
+}
+
+
+
+
+### GET ANALYSE BY ANALYSEID
+POST http://localhost:4000/getanalyseiabyid
+Content-Type: application/json
+
+{
+    "analyseiaId": "1"
+}
+
+
+
+### CREATE ANAYLSE IA
+POST http://localhost:4000/createanalyseia
+Content-Type: application/json
+
+{
+    "titre": "surconsommation détectée",
+    "analyse":"**Analyse de la Donnée** \n Sur la base de la donnée fournie, il est clair que les consommations électriques ont augmenté significativement au cours de la journée et particulièrement entre 15h et 16h. Les valeurs moyennes sont :
+* Heure : 10 - Consommation : 0,63
+* Heure : 11 - Consommation : 0,63
+* Heure : 12 - Consommation : 0,61
+* Heure : 14 - Consommation : 0,62
+* Heure : 15 - Consommation : 0,67
+* Heure : 16 - Consommation : 0,65
+
+Il est observable que les consommations sont plus élevées lorsque l'on passe d'une heure à une autre. Cela suggère que des appareils électriques spécifiques sont activés ou mis en fonction pendant cette période.
+
+**Appareils Suspects**
+
+Les appareils qui pourraient être responsables de cette consommation excessive sont :
+
+* Un ordinateur ou un appareil connecté à Internet qui serait activé et utilisé entre 15h et 16h
+* Un écran LED ou une télévision qui serait allumée pendant ces heures
+* Un réfrigérateur ou un congélateur qui serait en fonction pendant la nuit pour refroidir les aliments
+
+**Recommandation**
+
+Pour réduire la consommation électrique, il est recommandé de :
+
+* Désactiver tous les appareils non essentiels entre 15h et 16h
+* Utiliser des appareils énergétiquement plus efficaces tels que des LED ou des lampes à basse consommation
+* Réduire l'utilisation du réfrigérateur et du congélateur, en privilégiant les aliments frais ou congelés
+
+Il est important de noter que cette analyse est basée sur une seule période de 24 heures et peut varier en fonction des habitudes diaires de l'utilisateur. Il est recommandé de faire un suivi plus complet pour obtenir des résultats précis.",
+    "utilisateurId":"6",
+    "start_time":"20250203",
+    "end_time":"20250209"
+}
+
+
+
+
+
+
+
+
+
+

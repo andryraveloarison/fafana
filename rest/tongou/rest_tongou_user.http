@@ -1,0 +1,299 @@
+## https://ecozipo-codesource.onrender.com
+# http://localhost:4000
+
+# bfa3dc80b4e3d59749zxqg : Bureau
+# bff96527f75046059crdcz : ancien
+# bf97a670a088fa909f5ybe : nouveau compte principale maison youssouf (id 4)
+# bfa8cbeabe840627eay2sh : secteur 02 maison youssouf (id 9)
+# bfa6b3c635b2c0dd14q8hs : secteur 02 maison youssouf (id 11)
+# bf5932770f24c12602nams : delete pour teste groupe (DID 5)
+
+
+# bf0472e30a7dd94d38qxjy : kit koloina ( id(3) - compte(14) - kit(66) kit 9)
+# bf16db50f054d26bf18p7f : Hybride pour koloina ( id(3) - compte(14) - kit(58) )
+# bfb5228cb08652a25cpf9u : Hybride pour rianala ( id(3) - compte(14) - kit(67) ) // id rianala 4
+
+# bfb235e344e6e436f9ejcy :  (4)
+
+
+# bfbfdd93245b026a5arp3h 24 @ netsika (68)
+# bf5932770f24c12602nams : (DID : 5)
+
+# bf472b2ee2f03794aclmju : test brayan
+
+
+
+### GET KIT TONGOU USER ECOZIPO
+GET https://ecozipo-codesource.onrender.com/getallkittongouuserecozipo
+
+
+
+### GET KIT TONGOU USER
+POST http://localhost:4000/getallkittongouuser
+Content-Type: application/json
+
+{
+    "utilisateurId": "6"
+}
+
+
+### GET KIT TONGOU USER NEW
+POST https://ecozipo-codesource.onrender.com/getallkittongouusernew
+Content-Type: application/json
+
+{
+    "utilisateurId": "3"
+}
+
+
+
+### GET ALL KIT PRINCIPALE USER
+POST https://ecozipo-codesource.onrender.com/getallkitprincipaleuser
+Content-Type: application/json
+
+{
+    "utilisateurId": "6"
+}
+
+
+
+
+
+### GET KIT TONGOU USER BY COMPTE ELECTRICITE ID
+POST http://localhost:4000/getallkittongouuserbycompteelectricite
+Content-Type: application/json
+
+{
+     "compteElectriciteEauId":"10"
+}
+
+
+
+# bf0472e30a7dd94d38qxjy : kit koloina ( id(3) - compte(14) - kit(66) ) [ 200Kwh : 122106.52]
+# bf16db50f054d26bf18p7f : Hybride pour koloina ( id(3) - compte(14) - kit(58) )
+# bfb5228cb08652a25cpf9u : Hybride pour rianala ( id(3) - compte(14) - kit(67) ) // id rianala 4 GET KIT TONGOU BY ID KIT 
+# bf97a670a088fa909f5ybe : kit youssoud
+# bfa3dc80b4e3d59749zxqg : kit bureau
+###
+POST http://localhost:4000/getkittongouuserbyidkit
+Content-Type: application/json
+
+{
+    "idKitTongou": "bfa3dc80b4e3d59749zxqg",
+    "compteElectriciteEauId":"18"
+}
+
+
+
+### GET KIT TONGOU USER BY GROUPE
+POST http://localhost:4000/getallkittongouuserbygroupe
+Content-Type: application/json
+
+{
+    "utilisateurId": "3",
+    "KitGroupeTongouId":"8"
+}
+
+
+
+### GET KIT TONGOU USER BY OTHER GROUPE
+POST http://localhost:4000/getallkittongouuserbyothergroupe
+Content-Type: application/json
+
+{
+    "utilisateurId": "6",
+    "KitGroupeTongouId":"13"
+}
+
+
+
+# bfa3dc80b4e3d59749zxqg : Bureau
+# bff96527f75046059crdcz : ancien
+### ADD KIT TONGOU IN ECOZIPO
+POST https://ecozipo-codesource.onrender.com/addkittongouuser
+Content-Type: application/json
+
+{
+    "kitTongouId": "bff96527f75046059crdcz",
+    "compteElectriciteEauId":"29",
+    "modeGestionId":"2",
+    "kitTypeId":"1",
+    "KitGroupeTongouId":"1"
+}
+
+
+# bf674cbc00dc6ebbf7pcg2 ; (DID : 23) mety
+# bfbfdd93245b026a5arp3h : (DID : 68) mety
+
+# bf0472e30a7dd94d38qxjy
+
+### DELETE KIT TONGOU IN ECOZIPO # 
+DELETE  https://ecozipo-codesource.onrender.com/deletekittongouuser
+Content-Type: application/json
+
+{
+    "idKitTongou": "bfa3dc80b4e3d59749zxqg"
+}
+
+
+### UPDATE KIT TONGOU IN ECOZIPO
+POST  https://ecozipo-codesource.onrender.com/updatekittongouuser
+Content-Type: application/json
+
+{
+    "idKitTongou": "bff96527f75046059crdcz",
+    "name":"",
+    "kitTypeId":"1"
+}
+
+
+
+### UPDATE COMPTE ELECTRCITE EAU KIT USER
+POST  https://ecozipo-codesource.onrender.com/updatecompteelectriciteeaukituser
+Content-Type: application/json
+
+{
+    "device_id": "bfa3dc80b4e3d59749zxqg",
+    "compteElectriciteEauId":"17"
+}
+
+
+
+
+
+####################### HYBRIDE ############################################################################ 
+## 
+POST http://localhost:4000/updatevaluekithybridebyprincipale
+Content-Type: application/json
+
+
+
+
+
+
+
+
+
+####################### GET ALL AUTO RELEVE KIT ############################################################################ 
+### 
+POST http://localhost:4000/getallautoreleve
+Content-Type: application/json
+
+{
+    "compteElectriciteEauId":"17"
+}
+
+
+
+
+
+
+
+
+
+
+
+####################### GROUPE KIT USER ############################################################################ 
+### UPDATE GROUPE KIT TONGOU USER
+POST https://ecozipo-codesource.onrender.com/updategroupeuserkittongou
+Content-Type: application/json
+
+{
+    "device_id": "bf0472e30a7dd94d38qxjy",
+    "KitGroupeTongouId":"17",
+    "utilisateurId":"3"
+}
+
+
+
+
+
+### UPDATE GROUPE KIT TONGOU USER 
+POST http://localhost:4000/updategroupeuserkittongou
+Content-Type: application/json
+
+{
+    "device_id": "bfa3dc80b4e3d59749zxqg",
+    "KitGroupeTongouId":"7",
+    "utilisateurId":"6"
+}
+
+
+### DELETE GROUPE KIT TONGOU USER
+POST http://localhost:4000/deletegroupeuserkittongou
+Content-Type: application/json
+
+{
+    "KitGroupeTongouId":"2",
+    "utilisateurId":"6"
+}
+
+
+
+
+
+
+####################### STATISTIC KIT ############################################################################ 
+### GET STATISTIC KIT BY YEARS
+POST http://localhost:4000/getstatisticskitbyyears
+Content-Type: application/json
+
+{
+    "device_id": "bfa3dc80b4e3d59749zxqg",
+    "years":"2024",
+    "compteElectriciteEauId":"17"
+}
+
+
+
+
+### GET STATISTIC KIT BY MONTHS
+POST http://localhost:4000/getstatisticskitbymois
+Content-Type: application/json
+ 
+{
+    "device_id": "bf97a670a088fa909f5ybe",
+    "date":"01/15/2025",
+    "compteElectriciteEauId":"17"
+}
+
+
+
+
+### GET STATISTIC KIT BY MONTHS SPECIFIQUE bf97a670a088fa909f5ybe bfa3dc80b4e3d59749zxqg
+POST http://localhost:4000/getstatisticskitbymoisspecifique
+Content-Type: application/json
+
+{
+    "device_id": "bf97a670a088fa909f5ybe",
+    "start_time":"01/19/2025",
+    "end_time":"02/20/2025"
+}
+
+
+
+
+
+### GET STATISTIC KIT BY WEEK
+POST http://localhost:4000/getstatisticskitby7lastdays
+Content-Type: application/json
+
+{
+    "device_id": "bfa3dc80b4e3d59749zxqg",
+    "compteElectriciteEauId":"8"
+}
+
+
+
+
+### GET STATISTIC KIT BY DAY
+POST http://localhost:4000/getstatisticskitbyday
+Content-Type: application/json
+
+{
+    "device_id": "bf97a670a088fa909f5ybe",
+    "date": "02/02/2025",
+    "compteElectriciteEauId":"17"
+}
+
+

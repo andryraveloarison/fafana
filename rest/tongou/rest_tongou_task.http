@@ -1,0 +1,56 @@
+## https://ecozipo-codesource.onrender.com
+# http://localhost:4000
+
+# bfa3dc80b4e3d59749zxqg : Bureau
+# bff96527f75046059crdcz : maison
+
+
+### GET SCHEDULED TASK
+POST http://localhost:4000/getscheduledtask
+Content-Type: application/json
+
+{
+    "device_id": "bff96527f75046059crdcz"
+}
+
+
+
+### ADD SCHEDULED TASK
+POST http://localhost:4000/addscheduledtask   
+Content-Type: application/json
+
+{
+    "device_id": "bff96527f75046059crdcz",
+    "alias_name": "allumer 2",
+    "time": "13:49",
+    "date": "02/14/2025",
+    "value":"true",
+    "loops":{
+        "dimanche":"0",
+        "lundi":"0",
+        "mardi":"0",
+        "mercredi":"0",
+        "jeudi":"0",
+        "vendredi":"0",
+        "samedi":"0"
+    }
+}
+
+
+### DELETE SCHEDULED TASK
+DELETE http://localhost:4000/deletescheduledtask
+Content-Type: application/json
+
+{
+    "device_id": "bff96527f75046059crdcz",
+    "timer_ids": "488041247"
+}
+
+
+### GET DETAIL
+POST http://localhost:4000/getdetail
+Content-Type: application/json
+
+{
+    "device_id": "bff96527f75046059crdcz"
+}
